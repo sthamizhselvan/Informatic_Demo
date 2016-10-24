@@ -1,0 +1,1 @@
+#quickstart-quickstart-informatica-powercenter
