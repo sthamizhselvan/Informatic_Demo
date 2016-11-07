@@ -1,7 +1,7 @@
 global:
-  marketplace-ami: false
+  marketplace-ami: true
   owner: quickstart-eng@amazon.com
-  qsname: quickstart-quickstart-informatica-powercenter
+  qsname: quickstart-informatica-powercenter
   regions:
     - ap-northeast-1
     - ap-northeast-2
@@ -12,14 +12,14 @@ global:
     - eu-west-1
     - sa-east-1
     - us-east-1
+    - us-east-2
     - us-west-1
     - us-west-2
   reporting: true
- 
 tests:
-  quickstart-quickstart-informatica-powercentert1:
-    parameter_input: quickstart-quickstart-informatica-powercenter-example-params1.json
-    template_file: quickstart-quickstart-informatica-powercenter-example1.template
-  quickstart-quickstart-informatica-powercentert2:
-    parameter_input: quickstart-quickstart-informatica-powercenter-example-params2.json
-    template_file: quickstart-quickstart-informatica-powercenter-example2.template
+  master-linux:
+    parameter_input: informatica-powercenter-linux.json
+    template_file: informatica-powercenter-master.template
+  master-windows:
+    parameter_input: informatica-powercenter-windows.json
+    template_file: informatica-powercenter-master.template
