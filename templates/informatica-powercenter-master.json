@@ -17,7 +17,7 @@
     },
     {
         "ParameterKey": "EncryptionKeyPhrase",
-        "ParameterValue": "$[alfred_genuuid]"
+        "ParameterValue": "$[alfred_genpass_20]"
     },
     {
         "ParameterKey": "InformaticaDomainPassword",
