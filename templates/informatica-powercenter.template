@@ -148,23 +148,9 @@
             "NoEcho": "True",
             "Type": "String"
         },
-        "PowerCenterInstanceType": {
-            "AllowedValues": [
-                "m4.large",
-                "m4.xlarge",
-                "m4.2xlarge",
-                "m4.4xlarge",
-                "m4.10xlarge",
-                "m3.large",
-                "m3.xlarge",
-                "m3.2xlarge",
-                "c3.xlarge",
-                "c3.2xlarge",
-                "c3.4xlarge"
-            ],
-            "Default": "c3.2xlarge",
-            "Description": "Instance Type for Informatica Domain. Default is c3.2xlarge",
-            "Type": "String"
+        "KeyPairName": {
+            "Description": "Name of an existing EC2 KeyPair to enable external access to the Informatica Domain",
+            "Type": "AWS::EC2::KeyPair::KeyName"
         },
         "NumberOfPowerCenterInstances": {
             "Description": "Number of PowerCenter Nodes. Each node runs on one EC2 Instance",
@@ -172,18 +158,31 @@
             "AllowedValues": [
                 "1",
                 "2",
-                "3",
                 "4",
-                "5",
                 "6",
-                "7",
                 "8"
             ],
             "Default": "4"
         },
-        "KeyPairName": {
-            "Description": "Name of an existing EC2 KeyPair to enable external access to the Informatica Domain",
-            "Type": "AWS::EC2::KeyPair::KeyName"
+        "PowerCenterInstanceType": {
+            "AllowedValues": [
+                "c3.xlarge",
+                "c3.2xlarge",
+                "c3.4xlarge",
+                "c3.8xlarge",
+                "c4.xlarge",
+                "c4.2xlarge",
+                "c4.4xlarge",
+                "c4.8xlarge",
+                "r3.large",
+                "r3.xlarge",
+                "r3.2xlarge",
+                "r3.4xlarge",
+                "r3.8xlarge"
+            ],
+            "Default": "c4.2xlarge",
+            "Description": "Instance Type for Informatica Domain. Default is c4.2xlarge",
+            "Type": "String"
         },
         "PublicSubnet1ID": {
             "Description": "Select a publically accessible subnet ID for the Informatica Domain",
