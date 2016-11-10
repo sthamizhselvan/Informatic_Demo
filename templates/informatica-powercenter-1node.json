@@ -20,16 +20,28 @@
         "ParameterValue": "$[alfred_genpass_20]"
     },
     {
+        "ParameterKey": "InformaticaDomainName",
+        "ParameterValue": "Infa_Domain"
+    },
+    {
         "ParameterKey": "InformaticaDomainPassword",
         "ParameterValue": "$[alfred_genpass_18]"
+    },
+    {
+        "ParameterKey": "InformaticaNodeName",
+        "ParameterValue": "PowerCenter"
     },
     {
         "ParameterKey": "KeyPairName",
         "ParameterValue": "cikey"
     },
     {
+        "ParameterKey": "NumberOfPowerCenterInstances",
+        "ParameterValue": "1"
+    },
+    {
         "ParameterKey": "PowerCenterInstanceType",
-        "ParameterValue": "c3.2xlarge"
+        "ParameterValue": "c4.2xlarge"
     },
     {
         "ParameterKey": "PrivateSubnet1CIDR",

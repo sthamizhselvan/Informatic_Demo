@@ -17,6 +17,11 @@ global:
     - us-west-2
   reporting: true
 tests:
-  master:
-    parameter_input: informatica-powercenter-master.json
+  1node:
+    parameter_input: informatica-powercenter-1node.json
+    template_file: informatica-powercenter-master.template
+  4node:
+    parameter_input: informatica-powercenter-4node.json
+    regions:
+      - us-west-2
     template_file: informatica-powercenter-master.template
