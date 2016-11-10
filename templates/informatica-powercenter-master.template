@@ -14,7 +14,6 @@
                         "PrivateSubnet1CIDR",
                         "PrivateSubnet2CIDR",
                         "PublicSubnet1CIDR",
-                        "PublicSubnet2CIDR",
                         "RemoteAccessCIDR"
                     ]
                 },
@@ -24,7 +23,8 @@
                     },
                     "Parameters": [
                         "KeyPairName",
-                        "PowerCenterInstanceType"
+                        "PowerCenterInstanceType",
+                        "NumberOfPowerCenterInstances"
                     ]
                 },
                 {
@@ -32,9 +32,10 @@
                         "default": "Amazon RDS Configuration"
                     },
                     "Parameters": [
+                        "DatabaseType",
                         "DatabaseUsername",
-                        "DatabasePassword",
-                        "DatabaseType"
+                        "DatabasePassword"
+                        
                     ]
                 },
                 {
@@ -42,6 +43,8 @@
                         "default": "Informatica PowerCenter Configuration"
                     },
                     "Parameters": [
+                        "InformaticaDomainName",
+                        "InformaticaNodeName",
                         "InformaticaDomainPassword",
                         "EncryptionKeyPhrase"
                     ]
@@ -72,6 +75,12 @@
                 "EncryptionKeyPhrase": {
                     "default": "Encryption Key Phrase"
                 },
+                "InformaticaDomainName": {
+                    "default": "PowerCenter Domain Name"
+                },
+                "InformaticaNodeName": {
+                    "default": "Informatica Node Prefix"
+                },
                 "InformaticaDomainPassword": {
                     "default": "Informatica Administrator Password"
                 },
@@ -81,6 +90,9 @@
                 "PowerCenterInstanceType": {
                     "default": "Informatica Domain Instance Type"
                 },
+                "NumberOfPowerCenterInstances": {
+                    "default": "Number of Instances"
+                },
                 "PrivateSubnet1CIDR": {
                     "default": "Private Subnet 1 CIDR"
                 },
@@ -89,9 +101,6 @@
                 },
                 "PublicSubnet1CIDR": {
                     "default": "Public Subnet 1 CIDR"
-                },
-                "PublicSubnet2CIDR": {
-                    "default": "Public Subnet 2 CIDR"
                 },
                 "QSS3BucketName": {
                     "default": "Quick Start S3 Bucket Name"
@@ -114,7 +123,7 @@
             "Type": "List<AWS::EC2::AvailabilityZone::Name>"
         },
         "DatabasePassword": {
-            "Description": "Password for the database account in Amazon RDS.",
+            "Description": "Password for the Amazon RDS database account.",
             "MaxLength": "30",
             "MinLength": "8",
             "NoEcho": "true",
@@ -126,11 +135,11 @@
             ],
             "ConstraintDescription": "Oracle",
             "Default": "Oracle",
-            "Description": "The type of database to use in Amazon RDS. Currently, you can only use Oracle.",
+            "Description": "The type of database to use in Amazon RDS. Currently, you can only use Oracle",
             "Type": "String"
         },
         "DatabaseUsername": {
-            "Description": "Username for the database account in Amazon RDS.",
+            "Description": "Username for the Amazon RDS database account",
             "MaxLength": "30",
             "MinLength": "2",
             "Type": "String"
@@ -138,14 +147,28 @@
         "EncryptionKeyPhrase": {
             "AllowedPattern": "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$",
             "ConstraintDescription": "It should be 8 to 20 characters long, at least one uppercase letter at least one lowercase letter-at least one number Does not contain spaces",
-            "Description": "The text string used as the base word from which to generate an encryption key for the Informatica domain.",
+            "Description": "The text string used as the base word from which to generate an encryption key for the Informatica domain",
             "MaxLength": "32",
             "MinLength": "8",
             "NoEcho": "true",
             "Type": "String"
         },
+        "InformaticaDomainName" : {
+            "Description" : "Name for the Informatica PowerCenter Domain",
+            "Type" : "String",
+            "Default": "Infa_Domain",
+            "MinLength" : "4",
+            "MaxLength" : "20"
+        },
+        "InformaticaNodeName": {
+            "Description": "Prefix for the Nodes in Informatica PowerCenter Domain. Node number will be the suffix for the nodes. Eg PowerCenterNode1, PowerCenterNode2",
+            "Type": "String",
+            "Default": "PowerCenter",
+            "MinLength": "4",
+            "MaxLength": "20"
+        },
         "InformaticaDomainPassword": {
-            "Description": "Password for the Informatica domain.",
+            "Description": "Password for the Informatica Domain. Administrator is the default Username for Informatica Domain",
             "MaxLength": "32",
             "MinLength": "8",
             "NoEcho": "true",
@@ -172,35 +195,43 @@
             "Type": "String"
         },
         "KeyPairName": {
-            "Description": "Public/private key pairs allow you to securely connect to your instance after it launches",
+            "Description": "Name of an existing EC2 KeyPair to enable external access to the Informatica Domain",
             "Type": "AWS::EC2::KeyPair::KeyName"
+        },
+        "NumberOfPowerCenterInstances": {
+            "Description" : "Number of PowerCenter Nodes. Each node runs on one EC2 Instance",
+            "Type" : "String",
+            "AllowedValues": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8"
+            ],
+            "Default": "4"
         },
         "PrivateSubnet1CIDR": {
             "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(1[6-9]|2[0-8]))$",
             "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/16-28",
             "Default": "10.0.0.0/19",
-            "Description": "CIDR block for private subnet 1 located in Availability Zone 1.",
+            "Description": "CIDR block for private subnet 1 located in Availability Zone 1",
             "Type": "String"
         },
         "PrivateSubnet2CIDR": {
             "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(1[6-9]|2[0-8]))$",
             "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/16-28",
             "Default": "10.0.32.0/19",
-            "Description": "CIDR block for private subnet 2 located in Availability Zone 2.",
+            "Description": "CIDR block for private subnet 2 located in Availability Zone 2",
             "Type": "String"
         },
         "PublicSubnet1CIDR": {
             "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(1[6-9]|2[0-8]))$",
             "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/16-28",
             "Default": "10.0.128.0/20",
-            "Description": "CIDR Block for the public DMZ subnet 1 located in Availability Zone 1",
-            "Type": "String"
-        },
-        "PublicSubnet2CIDR": {
-            "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(1[6-9]|2[0-8]))$",
-            "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/16-28",
-            "Default": "10.0.144.0/20",
-            "Description": "CIDR Block for the public DMZ subnet 2 located in Availability Zone 2",
+            "Description": "CIDR Block for the public subnet located in Availability Zone 1",
             "Type": "String"
         },
         "QSS3BucketName": {
@@ -220,7 +251,8 @@
         "RemoteAccessCIDR": {
             "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/([0-9]|[1-2][0-9]|3[0-2]))$",
             "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/x",
-            "Description": "Allowed CIDR block for external access to the Informatica domain and the EMR cluster",
+            "Description": "Allowed CIDR block for external access to the Informatica Domain",
+            "Default" : "0.0.0.0/0",
             "Type": "String"
         },
         "VPCCIDR": {
@@ -337,9 +369,6 @@
                     "PublicSubnet1CIDR": {
                         "Ref": "PublicSubnet1CIDR"
                     },
-                    "PublicSubnet2CIDR": {
-                        "Ref": "PublicSubnet2CIDR"
-                    },
                     "VPCCIDR": {
                         "Ref": "VPCCIDR"
                     }
@@ -405,11 +434,20 @@
                     "EncryptionKeyPhrase": {
                         "Ref": "EncryptionKeyPhrase"
                     },
+                    "InformaticaDomainName": {
+                        "Ref": "InformaticaDomainName"
+                    },
+                    "InformaticaNodeName": {
+                        "Ref": "InformaticaNodeName"
+                    },
                     "InformaticaDomainPassword": {
                         "Ref": "InformaticaDomainPassword"
                     },
                     "PowerCenterInstanceType": {
                         "Ref": "PowerCenterInstanceType"
+                    },
+                    "NumberOfPowerCenterInstances": {
+                        "Ref": "NumberOfPowerCenterInstances"
                     },
                     "KeyPairName": {
                         "Ref": "KeyPairName"
@@ -418,12 +456,6 @@
                         "Fn::GetAtt": [
                             "VPCStack",
                             "Outputs.PublicSubnet1ID"
-                        ]
-                    },
-                    "PublicSubnet2ID": {
-                        "Fn::GetAtt": [
-                            "VPCStack",
-                            "Outputs.PublicSubnet2ID"
                         ]
                     },
                     "RemoteAccessCIDR": {
