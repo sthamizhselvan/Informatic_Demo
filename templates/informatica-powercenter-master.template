@@ -14,6 +14,7 @@
                         "PrivateSubnet1CIDR",
                         "PrivateSubnet2CIDR",
                         "PublicSubnet1CIDR",
+                        "PublicSubnet2CIDR",
                         "RemoteAccessCIDR"
                     ]
                 },
@@ -100,6 +101,9 @@
                 },
                 "PublicSubnet1CIDR": {
                     "default": "Public Subnet 1 CIDR"
+                },
+                "PublicSubnet2CIDR": {
+                    "default": "Public Subnet 2 CIDR"
                 },
                 "QSS3BucketName": {
                     "default": "Quick Start S3 Bucket Name"
@@ -227,7 +231,14 @@
             "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(1[6-9]|2[0-8]))$",
             "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/16-28",
             "Default": "10.0.128.0/20",
-            "Description": "CIDR Block for the public subnet located in Availability Zone 1",
+            "Description": "CIDR Block for the public subnet 1 located in Availability Zone 1",
+            "Type": "String"
+        },
+        "PublicSubnet2CIDR": {
+            "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(1[6-9]|2[0-8]))$",
+            "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/16-28",
+            "Default": "10.0.144.0/20",
+            "Description": "CIDR Block for the public subnet 2 located in Availability Zone 2",
             "Type": "String"
         },
         "QSS3BucketName": {
@@ -364,6 +375,9 @@
                     "PublicSubnet1CIDR": {
                         "Ref": "PublicSubnet1CIDR"
                     },
+                    "PublicSubnet2CIDR": {
+                        "Ref": "PublicSubnet2CIDR"
+                    },
                     "VPCCIDR": {
                         "Ref": "VPCCIDR"
                     }
@@ -451,6 +465,12 @@
                         "Fn::GetAtt": [
                             "VPCStack",
                             "Outputs.PublicSubnet1ID"
+                        ]
+                    },
+                    "PublicSubnet2ID": {
+                        "Fn::GetAtt": [
+                            "VPCStack",
+                            "Outputs.PublicSubnet2ID"
                         ]
                     },
                     "RemoteAccessCIDR": {
