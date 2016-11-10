@@ -287,7 +287,6 @@
         },
         "Config": {
             "Settings": {
-                "RDPNetwork": "0.0.0.0/0",
                 "InformaticaDomainName": "InfaDefaultDomain",
                 "DatabaseName": "pc",
                 "Node1Name": "PowercenterNode1",
@@ -313,58 +312,10 @@
         }
     },
     "Resources": {
-        "InstanceSecurityGroup": {
-            "Type": "AWS::EC2::SecurityGroup",
-            "Properties": {
-                "GroupDescription": "Enable RDP and within VPC traffic",
-                "VpcId": {
-                    "Ref": "VPCID"
-                },
-                "SecurityGroupIngress": [
-                    {
-                        "IpProtocol": "tcp",
-                        "FromPort": "22",
-                        "ToPort": "22",
-                        "CidrIp": {
-                            "Ref": "RemoteAccessCIDR"
-                        }
-                    },
-                    {
-                        "IpProtocol": "tcp",
-                        "FromPort": "5000",
-                        "ToPort": "7000",
-                        "CidrIp": {
-                            "Ref": "RemoteAccessCIDR"
-                        }
-                    }
-                ]
-            }
-        },
-        "InstanceSecurityGroupIngress": {
-            "Type": "AWS::EC2::SecurityGroupIngress",
-            "Properties": {
-                "IpProtocol": "-1",
-                "FromPort": "-1",
-                "ToPort": "-1",
-                "SourceSecurityGroupId": {
-                    "Fn::GetAtt": [
-                        "InstanceSecurityGroup",
-                        "GroupId"
-                    ]
-                },
-                "GroupId": {
-                    "Fn::GetAtt": [
-                        "InstanceSecurityGroup",
-                        "GroupId"
-                    ]
-                }
-            },
-            "DependsOn": "InstanceSecurityGroup"
-        },
         "DBSubnetGroup": {
             "Type": "AWS::RDS::DBSubnetGroup",
             "Properties": {
-                "DBSubnetGroupDescription": "Subnet Group for RDS",
+                "DBSubnetGroupDescription": "Subnet Group for Informatica PowerCenter RDS Database",
                 "SubnetIds": {
                     "Ref": "DBSubnetIDs"
                 },
@@ -379,21 +330,31 @@
         "DBSecurityGroup": {
             "Type": "AWS::EC2::SecurityGroup",
             "Properties": {
-                "GroupDescription": "ICS DB SG",
+                "GroupDescription": "Informatica PowerCenter RDS Database Security Group",
                 "SecurityGroupIngress": [
                     {
                         "IpProtocol": "tcp",
-                        "FromPort": "1521",
-                        "ToPort": "1521",
+                        "FromPort": {
+                            "Fn::FindInMap": [
+                                "Config",
+                                {
+                                    "Ref": "DatabaseType"
+                                },
+                                "Port"
+                            ]
+                        },
+                        "ToPort": {
+                            "Fn::FindInMap": [
+                                "Config",
+                                {
+                                    "Ref": "DatabaseType"
+                                },
+                                "Port"
+                            ]
+                        },
                         "SourceSecurityGroupId": {
                             "Ref": "InstanceSecurityGroup"
                         }
-                    }
-                ],
-                "Tags": [
-                    {
-                        "Key": "Env",
-                        "Value": "Infa-HOL-Demo"
                     }
                 ],
                 "VpcId": {
@@ -483,16 +444,65 @@
                 ]
             }
         },
-        "InformaticaMasterEIPAddress": {
+        "InstanceSecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "Enable RDP and within VPC traffic",
+                "VpcId": {
+                    "Ref": "VPCID"
+                },
+                "SecurityGroupIngress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": "22",
+                        "ToPort": "22",
+                        "CidrIp": {
+                            "Ref": "RemoteAccessCIDR"
+                        }
+                    },
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": "5000",
+                        "ToPort": "7000",
+                        "CidrIp": {
+                            "Ref": "RemoteAccessCIDR"
+                        }
+                    }
+                ]
+            }
+        },
+        "InstanceSecurityGroupIngress": {
+            "DependsOn": "InstanceSecurityGroup",
+            "Type": "AWS::EC2::SecurityGroupIngress",
+            "Properties": {
+                "IpProtocol": "-1",
+                "FromPort": "-1",
+                "ToPort": "-1",
+                "SourceSecurityGroupId": {
+                    "Fn::GetAtt": [
+                        "InstanceSecurityGroup",
+                        "GroupId"
+                    ]
+                },
+                "GroupId": {
+                    "Fn::GetAtt": [
+                        "InstanceSecurityGroup",
+                        "GroupId"
+                    ]
+                }
+            }
+        },
+        "InfaMasterEIPAddress": {
             "Type": "AWS::EC2::EIP",
             "Properties": {
                 "Domain": "vpc",
                 "InstanceId": {
-                    "Ref": "InformaticaMasterEC2Instance"
+                    "Ref": "InfaMasterEC2Instance"
                 }
             }
         },
-        "InformaticaMasterEC2Instance": {
+        "InfaMasterEC2Instance": {
+            "DependsOn": "RDSInstance",
             "Type": "AWS::EC2::Instance",
             "Metadata": {
                 "AWS::CloudFormation::Init": {
@@ -682,25 +692,24 @@
                                 "\n",
                                 "/opt/aws/bin/cfn-signal -e $? '",
                                 {
-                                    "Ref": "InformaticaMasterWaitConditionHandle"
+                                    "Ref": "InfaMasterWaitConditionHandle"
                                 },
                                 "'\n"
                             ]
                         ]
                     }
                 }
-            },
-            "DependsOn": "RDSInstance"
+            }
         },
-        "InformaticaMasterWaitConditionHandle": {
+        "InfaMasterWaitConditionHandle": {
             "Type": "AWS::CloudFormation::WaitConditionHandle"
         },
-        "InformaticaMasterWaitCondition": {
+        "InfaMasterWaitCondition": {
+            "DependsOn": "InfaMasterEC2Instance",
             "Type": "AWS::CloudFormation::WaitCondition",
-            "DependsOn": "InformaticaMasterEC2Instance",
             "Properties": {
                 "Handle": {
-                    "Ref": "InformaticaMasterWaitConditionHandle"
+                    "Ref": "InfaMasterWaitConditionHandle"
                 },
                 "Timeout": "8000"
             }
@@ -710,32 +719,32 @@
         "PowerCenterAgentIP": {
             "Value": {
                 "Fn::GetAtt": [
-                    "InformaticaMasterEC2Instance",
+                    "InfaMasterEC2Instance",
                     "PublicIp"
                 ]
             },
             "Description": "Elastic IP address of the PowerCenter instance"
         },
-        "InstanceId": {
-            "Description": "InstanceId of the newly created EC2 instance",
+        "InstanceID": {
+            "Description": "Instance ID of the newly created EC2 instance",
             "Value": {
-                "Ref": "InformaticaMasterEC2Instance"
+                "Ref": "InfaMasterEC2Instance"
             }
         },
-        "AZ": {
+        "AvailabilityZone": {
             "Description": "Availability Zone of the newly created EC2 instance",
             "Value": {
                 "Fn::GetAtt": [
-                    "InformaticaMasterEC2Instance",
+                    "InfaMasterEC2Instance",
                     "AvailabilityZone"
                 ]
             }
         },
         "PublicDNS": {
-            "Description": "Public DNSName of the newly created EC2 instance",
+            "Description": "Public DNS name of the newly created EC2 instance",
             "Value": {
                 "Fn::GetAtt": [
-                    "InformaticaMasterEC2Instance",
+                    "InfaMasterEC2Instance",
                     "PublicDnsName"
                 ]
             }
@@ -745,49 +754,6 @@
                 "Ref": "RDSInstance"
             },
             "Description": "RDS Instance ID"
-        },
-        "VPC": {
-            "Description": "VPCId of the newly created VPC",
-            "Value": {
-                "Ref": "VPCID"
-            }
-        },
-        "PublicIP": {
-            "Description": "Public IP address of the newly created EC2 instance",
-            "Value": {
-                "Fn::GetAtt": [
-                    "InformaticaMasterEC2Instance",
-                    "PublicIp"
-                ]
-            }
-        },
-        "PublicSubnet": {
-            "Description": "SubnetId of the public subnet",
-            "Value": {
-                "Ref": "PublicSubnet1ID"
-            }
-        },
-        "DataTierSubnet1": {
-            "Description": "SubnetId of the public subnet",
-            "Value": {
-                "Fn::Select": [
-                    "0",
-                    {
-                        "Ref": "DBSubnetIDs"
-                    }
-                ]
-            }
-        },
-        "DataTierSubnet2": {
-            "Description": "SubnetId of the public subnet",
-            "Value": {
-                "Fn::Select": [
-                    "1",
-                    {
-                        "Ref": "DBSubnetIDs"
-                    }
-                ]
-            }
         }
     }
 }
