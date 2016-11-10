@@ -335,175 +335,68 @@
         }
     },
     "Conditions": {
-        "Node2Condition": {
-            "Fn::Equals": [
+        "2NodeCondition": {
+            "Fn::Or": [
                 {
-                    "Ref": "NumberOfPowerCenterInstances"
+                    "Fn::Equals": [
+                        {
+                            "Ref": "NumberOfPowerCenterInstances"
+                        },
+                        "2"
+                    ]
                 },
-                "2"
+                {
+                    "Condition": "4NodeCondition"
+                },
+                {
+                    "Condition": "6NodeCondition"
+                },
+                {
+                    "Condition": "8NodeCondition"
+                }
             ]
         },
-        "Node3Condition": {
-            "Fn::Equals": [
+        "4NodeCondition": {
+            "Fn::Or": [
                 {
-                    "Ref": "NumberOfPowerCenterInstances"
+                    "Fn::Equals": [
+                        {
+                            "Ref": "NumberOfPowerCenterInstances"
+                        },
+                        "4"
+                    ]
                 },
-                "3"
+                {
+                    "Condition": "6NodeCondition"
+                },
+                {
+                    "Condition": "8NodeCondition"
+                }
             ]
         },
-        "Node4Condition": {
-            "Fn::Equals": [
+        "6NodeCondition": {
+            "Fn::Or": [
                 {
-                    "Ref": "NumberOfPowerCenterInstances"
+                    "Fn::Equals": [
+                        {
+                            "Ref": "NumberOfPowerCenterInstances"
+                        },
+                        "6"
+                    ]
                 },
-                "4"
+                {
+                    "Condition": "8NodeCondition"
+                }
             ]
         },
-        "Node5Condition": {
-            "Fn::Equals": [
-                {
-                    "Ref": "NumberOfPowerCenterInstances"
-                },
-                "5"
-            ]
-        },
-        "Node6Condition": {
-            "Fn::Equals": [
-                {
-                    "Ref": "NumberOfPowerCenterInstances"
-                },
-                "6"
-            ]
-        },
-        "Node7Condition": {
-            "Fn::Equals": [
-                {
-                    "Ref": "NumberOfPowerCenterInstances"
-                },
-                "7"
-            ]
-        },
-        "Node8Condition": {
+        "8NodeCondition": {
             "Fn::Equals": [
                 {
                     "Ref": "NumberOfPowerCenterInstances"
                 },
                 "8"
             ]
-        },
-        "Node2CreateCondition": {
-            "Fn::Or": [
-                {
-                    "Condition": "Node2Condition"
-                },
-                {
-                    "Condition": "Node3Condition"
-                },
-                {
-                    "Condition": "Node4Condition"
-                },
-                {
-                    "Condition": "Node5Condition"
-                },
-                {
-                    "Condition": "Node6Condition"
-                },
-                {
-                    "Condition": "Node7Condition"
-                },
-                {
-                    "Condition": "Node8Condition"
-                }
-            ]
-        },
-        "Node3CreateCondition": {
-            "Fn::Or": [
-                {
-                    "Condition": "Node3Condition"
-                },
-                {
-                    "Condition": "Node4Condition"
-                },
-                {
-                    "Condition": "Node5Condition"
-                },
-                {
-                    "Condition": "Node6Condition"
-                },
-                {
-                    "Condition": "Node7Condition"
-                },
-                {
-                    "Condition": "Node8Condition"
-                }
-            ]
-        },
-        "Node4CreateCondition": {
-            "Fn::Or": [
-                {
-                    "Condition": "Node4Condition"
-                },
-                {
-                    "Condition": "Node5Condition"
-                },
-                {
-                    "Condition": "Node6Condition"
-                },
-                {
-                    "Condition": "Node7Condition"
-                },
-                {
-                    "Condition": "Node8Condition"
-                }
-            ]
-        },
-        "Node5CreateCondition": {
-            "Fn::Or": [
-                {
-                    "Condition": "Node5Condition"
-                },
-                {
-                    "Condition": "Node6Condition"
-                },
-                {
-                    "Condition": "Node7Condition"
-                },
-                {
-                    "Condition": "Node8Condition"
-                }
-            ]
-        },
-        "Node6CreateCondition": {
-            "Fn::Or": [
-                {
-                    "Condition": "Node6Condition"
-                },
-                {
-                    "Condition": "Node7Condition"
-                },
-                {
-                    "Condition": "Node8Condition"
-                }
-            ]
-        },
-        "Node7CreateCondition": {
-            "Fn::Or": [
-                {
-                    "Condition": "Node7Condition"
-                },
-                {
-                    "Condition": "Node8Condition"
-                }
-            ]
-        },
-        "Node8CreateCondition": {
-            "Fn::Equals": [
-                {
-                    "Ref": "NumberOfPowerCenterInstances"
-                },
-                "8"
-            ]
-        },
+        }
     },
     "Resources": {
         "DBSubnetGroup": {
@@ -685,11 +578,11 @@
             "Properties": {
                 "Domain": "vpc",
                 "InstanceId": {
-                    "Ref": "InfaMasterEC2Instance"
+                    "Ref": "InfaMaster"
                 }
             }
         },
-        "InfaMasterEC2Instance": {
+        "InfaMaster": {
             "DependsOn": "RDSInstance",
             "Type": "AWS::EC2::Instance",
             "Metadata": {
@@ -869,7 +762,7 @@
                                 {
                                     "Ref": "AWS::StackId"
                                 },
-                                " -r InfaMasterEC2Instance ",
+                                " -r InfaMaster ",
                                 "    --region ",
                                 {
                                     "Ref": "AWS::Region"
@@ -890,7 +783,7 @@
             "Type": "AWS::CloudFormation::WaitConditionHandle"
         },
         "InfaMasterWaitCondition": {
-            "DependsOn": "InfaMasterEC2Instance",
+            "DependsOn": "InfaMaster",
             "Type": "AWS::CloudFormation::WaitCondition",
             "Properties": {
                 "Handle": {
@@ -899,7 +792,8 @@
                 "Timeout": "8000"
             }
         },
-        "InfaNode2IPAddress": {
+        "InfaNode2EIPAddress": {
+            "Condition": "2NodeCondition",
             "Type": "AWS::EC2::EIP",
             "Properties": {
                 "Domain": "vpc",
@@ -909,9 +803,9 @@
             }
         },
         "InfaNode2": {
-            "Type": "AWS::EC2::Instance",
-            "Condition": "Node2CreateCondition",
+            "Condition": "2NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
+            "Type": "AWS::EC2::Instance",
             "Properties": {
                 "Tags": [
                     {
@@ -1051,7 +945,7 @@
                                 "export DOMAIN_HOST_NAME=\"",
                                 {
                                     "Fn::GetAtt": [
-                                        "InfaMasterEC2Instance",
+                                        "InfaMaster",
                                         "PrivateIp"
                                     ]
                                 },
@@ -1074,7 +968,8 @@
                 }
             }
         },
-        "InfaNode3IPAddress": {
+        "InfaNode3EIPAddress": {
+            "Condition": "4NodeCondition",
             "Type": "AWS::EC2::EIP",
             "Properties": {
                 "Domain": "vpc",
@@ -1084,9 +979,9 @@
             }
         },
         "InfaNode3": {
-            "Type": "AWS::EC2::Instance",
-            "Condition": "Node3CreateCondition",
+            "Condition": "4NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
+            "Type": "AWS::EC2::Instance",
             "Properties": {
                 "Tags": [
                     {
@@ -1226,7 +1121,7 @@
                                 "export DOMAIN_HOST_NAME=\"",
                                 {
                                     "Fn::GetAtt": [
-                                        "InfaMasterEC2Instance",
+                                        "InfaMaster",
                                         "PrivateIp"
                                     ]
                                 },
@@ -1249,7 +1144,8 @@
                 }
             }
         },
-        "InfaNode4IPAddress": {
+        "InfaNode4EIPAddress": {
+            "Condition": "4NodeCondition",
             "Type": "AWS::EC2::EIP",
             "Properties": {
                 "Domain": "vpc",
@@ -1259,9 +1155,9 @@
             }
         },
         "InfaNode4": {
-            "Type": "AWS::EC2::Instance",
-            "Condition": "Node4CreateCondition",
+            "Condition": "4NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
+            "Type": "AWS::EC2::Instance",
             "Properties": {
                 "Tags": [
                     {
@@ -1401,7 +1297,7 @@
                                 "export DOMAIN_HOST_NAME=\"",
                                 {
                                     "Fn::GetAtt": [
-                                        "InfaMasterEC2Instance",
+                                        "InfaMaster",
                                         "PrivateIp"
                                     ]
                                 },
@@ -1424,7 +1320,8 @@
                 }
             }
         },
-        "InfaNode5IPAddress": {
+        "InfaNode5EIPAddress": {
+            "Condition": "6NodeCondition",
             "Type": "AWS::EC2::EIP",
             "Properties": {
                 "Domain": "vpc",
@@ -1434,9 +1331,9 @@
             }
         },
         "InfaNode5": {
-            "Type": "AWS::EC2::Instance",
-            "Condition": "Node5CreateCondition",
+            "Condition": "6NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
+            "Type": "AWS::EC2::Instance",
             "Properties": {
                 "Tags": [
                     {
@@ -1576,7 +1473,7 @@
                                 "export DOMAIN_HOST_NAME=\"",
                                 {
                                     "Fn::GetAtt": [
-                                        "InfaMasterEC2Instance",
+                                        "InfaMaster",
                                         "PrivateIp"
                                     ]
                                 },
@@ -1599,7 +1496,8 @@
                 }
             }
         },
-        "InfaNode6IPAddress": {
+        "InfaNode6EIPAddress": {
+            "Condition": "6NodeCondition",
             "Type": "AWS::EC2::EIP",
             "Properties": {
                 "Domain": "vpc",
@@ -1609,9 +1507,9 @@
             }
         },
         "InfaNode6": {
-            "Type": "AWS::EC2::Instance",
-            "Condition": "Node6CreateCondition",
+            "Condition": "6NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
+            "Type": "AWS::EC2::Instance",
             "Properties": {
                 "Tags": [
                     {
@@ -1751,7 +1649,7 @@
                                 "export DOMAIN_HOST_NAME=\"",
                                 {
                                     "Fn::GetAtt": [
-                                        "InfaMasterEC2Instance",
+                                        "InfaMaster",
                                         "PrivateIp"
                                     ]
                                 },
@@ -1774,7 +1672,8 @@
                 }
             }
         },
-        "InfaNode7IPAddress": {
+        "InfaNode7EIPAddress": {
+            "Condition": "8NodeCondition",
             "Type": "AWS::EC2::EIP",
             "Properties": {
                 "Domain": "vpc",
@@ -1784,9 +1683,9 @@
             }
         },
         "InfaNode7": {
-            "Type": "AWS::EC2::Instance",
-            "Condition": "Node7CreateCondition",
+            "Condition": "8NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
+            "Type": "AWS::EC2::Instance",
             "Properties": {
                 "Tags": [
                     {
@@ -1926,7 +1825,7 @@
                                 "export DOMAIN_HOST_NAME=\"",
                                 {
                                     "Fn::GetAtt": [
-                                        "InfaMasterEC2Instance",
+                                        "InfaMaster",
                                         "PrivateIp"
                                     ]
                                 },
@@ -1949,7 +1848,8 @@
                 }
             }
         },
-        "InfaNode8IPAddress": {
+        "InfaNode8EIPAddress": {
+            "Condition": "8NodeCondition",
             "Type": "AWS::EC2::EIP",
             "Properties": {
                 "Domain": "vpc",
@@ -1959,9 +1859,9 @@
             }
         },
         "InfaNode8": {
-            "Type": "AWS::EC2::Instance",
-            "Condition": "Node8CreateCondition",
+            "Condition": "8NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
+            "Type": "AWS::EC2::Instance",
             "Properties": {
                 "Tags": [
                     {
@@ -2101,7 +2001,7 @@
                                 "export DOMAIN_HOST_NAME=\"",
                                 {
                                     "Fn::GetAtt": [
-                                        "InfaMasterEC2Instance",
+                                        "InfaMaster",
                                         "PrivateIp"
                                     ]
                                 },
@@ -2129,7 +2029,7 @@
         "PowerCenterAgentIP": {
             "Value": {
                 "Fn::GetAtt": [
-                    "InfaMasterEC2Instance",
+                    "InfaMaster",
                     "PublicIp"
                 ]
             },
@@ -2138,14 +2038,14 @@
         "InstanceID": {
             "Description": "Instance ID of the newly created EC2 Master instance",
             "Value": {
-                "Ref": "InfaMasterEC2Instance"
+                "Ref": "InfaMaster"
             }
         },
         "AvailabilityZone": {
             "Description": "Availability Zone of the newly created EC2 instances",
             "Value": {
                 "Fn::GetAtt": [
-                    "InfaMasterEC2Instance",
+                    "InfaMaster",
                     "AvailabilityZone"
                 ]
             }
@@ -2154,7 +2054,7 @@
             "Description": "Public DNS name of the newly created EC2 Master instance",
             "Value": {
                 "Fn::GetAtt": [
-                    "InfaMasterEC2Instance",
+                    "InfaMaster",
                     "PublicDnsName"
                 ]
             }
