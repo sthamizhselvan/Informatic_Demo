@@ -45,6 +45,7 @@
                     "Parameters": [
                         "InformaticaDomainName",
                         "InformaticaNodeName",
+                        "InformaticaDomainUsername",
                         "InformaticaDomainPassword",
                         "EncryptionKeyPhrase"
                     ]
@@ -80,6 +81,9 @@
                 },
                 "InformaticaNodeName": {
                     "default": "Informatica Node Prefix"
+                },
+                "InformaticaDomainUsername": {
+                    "default": "Informatica Administrator Username"
                 },
                 "InformaticaDomainPassword": {
                     "default": "Informatica Administrator Password"
@@ -157,21 +161,29 @@
             "Type": "String"
         },
         "InformaticaDomainName": {
-            "Description": "Name for the Informatica PowerCenter Domain",
+            "Description": "Name for the Informatica Domain",
             "Type": "String",
             "Default": "Infa_Domain",
             "MinLength": "4",
             "MaxLength": "20"
         },
         "InformaticaNodeName": {
-            "Description": "Prefix for the Nodes in Informatica PowerCenter Domain. Node number will be the suffix for the nodes. Eg PowerCenterNode1, PowerCenterNode2",
+            "Description": "Prefix for the Nodes in Informatica Domain. Node number will be the suffix for the nodes. Eg PowerCenterNode1, PowerCenterNode2",
             "Type": "String",
             "Default": "PowerCenter",
             "MinLength": "4",
             "MaxLength": "20"
         },
+        "InformaticaDomainUsername": {
+            "Description": "Username for the Informatica Domain.",
+            "AllowedValues" : ["Administrator"],
+            "Default": "Administrator",
+            "MaxLength": "32",
+            "MinLength": "8",
+            "Type": "String"
+        },
         "InformaticaDomainPassword": {
-            "Description": "Password for the Informatica Domain. Administrator is the default Username for Informatica Domain",
+            "Description": "Password for the Informatica Domain",
             "MaxLength": "32",
             "MinLength": "8",
             "NoEcho": "true",
@@ -448,6 +460,9 @@
                     },
                     "InformaticaNodeName": {
                         "Ref": "InformaticaNodeName"
+                    },
+                    "InformaticaDomainUsername": {
+                        "Ref": "InformaticaDomainUsername"
                     },
                     "InformaticaDomainPassword": {
                         "Ref": "InformaticaDomainPassword"
