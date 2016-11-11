@@ -813,6 +813,35 @@
             "Condition": "2NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
             "Type": "AWS::EC2::Instance",
+            "Metadata": {
+                "AWS::CloudFormation::Init": {
+                    "config": {
+                        "commands": {
+                            "1-setup": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                            {
+                                                "Ref": "InformaticaDomainPassword"
+                                            },
+                                            " ",
+                                            {
+                                                "Ref": "DatabasePassword"
+                                            },
+                                            " null ",
+                                            {
+                                                "Ref": "EncryptionKeyPhrase"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },            
             "Properties": {
                 "Tags": [
                     {
@@ -957,18 +986,17 @@
                                     ]
                                 },
                                 "\"\n",
-                                "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                "echo \"running cfn init\" \n",
+                                "cfn-init -s ",
                                 {
-                                    "Ref": "InformaticaDomainPassword"
+                                    "Ref": "AWS::StackId"
                                 },
-                                " ",
+                                " -r InfaNode2 ",
+                                "    --region ",
                                 {
-                                    "Ref": "DatabasePassword"
+                                    "Ref": "AWS::Region"
                                 },
-                                " null ",
-                                {
-                                    "Ref": "EncryptionKeyPhrase"
-                                }
+                                "\n"
                             ]
                         ]
                     }
@@ -989,6 +1017,35 @@
             "Condition": "4NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
             "Type": "AWS::EC2::Instance",
+            "Metadata": {
+                "AWS::CloudFormation::Init": {
+                    "config": {
+                        "commands": {
+                            "1-setup": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                            {
+                                                "Ref": "InformaticaDomainPassword"
+                                            },
+                                            " ",
+                                            {
+                                                "Ref": "DatabasePassword"
+                                            },
+                                            " null ",
+                                            {
+                                                "Ref": "EncryptionKeyPhrase"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },             
             "Properties": {
                 "Tags": [
                     {
@@ -1133,18 +1190,17 @@
                                     ]
                                 },
                                 "\"\n",
-                                "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                "echo \"running cfn init\" \n",
+                                "cfn-init -s ",
                                 {
-                                    "Ref": "InformaticaDomainPassword"
+                                    "Ref": "AWS::StackId"
                                 },
-                                " ",
+                                " -r InfaNode3",
+                                "    --region ",
                                 {
-                                    "Ref": "DatabasePassword"
+                                    "Ref": "AWS::Region"
                                 },
-                                " null ",
-                                {
-                                    "Ref": "EncryptionKeyPhrase"
-                                }
+                                "\n"
                             ]
                         ]
                     }
@@ -1165,6 +1221,35 @@
             "Condition": "4NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
             "Type": "AWS::EC2::Instance",
+            "Metadata": {
+                "AWS::CloudFormation::Init": {
+                    "config": {
+                        "commands": {
+                            "1-setup": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                            {
+                                                "Ref": "InformaticaDomainPassword"
+                                            },
+                                            " ",
+                                            {
+                                                "Ref": "DatabasePassword"
+                                            },
+                                            " null ",
+                                            {
+                                                "Ref": "EncryptionKeyPhrase"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },             
             "Properties": {
                 "Tags": [
                     {
@@ -1309,18 +1394,17 @@
                                     ]
                                 },
                                 "\"\n",
-                                "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                "echo \"running cfn init\" \n",
+                                "cfn-init -s ",
                                 {
-                                    "Ref": "InformaticaDomainPassword"
+                                    "Ref": "AWS::StackId"
                                 },
-                                " ",
+                                " -r InfaNode4",
+                                "    --region ",
                                 {
-                                    "Ref": "DatabasePassword"
+                                    "Ref": "AWS::Region"
                                 },
-                                " null ",
-                                {
-                                    "Ref": "EncryptionKeyPhrase"
-                                }
+                                "\n"
                             ]
                         ]
                     }
@@ -1341,6 +1425,35 @@
             "Condition": "6NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
             "Type": "AWS::EC2::Instance",
+            "Metadata": {
+                "AWS::CloudFormation::Init": {
+                    "config": {
+                        "commands": {
+                            "1-setup": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                            {
+                                                "Ref": "InformaticaDomainPassword"
+                                            },
+                                            " ",
+                                            {
+                                                "Ref": "DatabasePassword"
+                                            },
+                                            " null ",
+                                            {
+                                                "Ref": "EncryptionKeyPhrase"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },             
             "Properties": {
                 "Tags": [
                     {
@@ -1485,18 +1598,17 @@
                                     ]
                                 },
                                 "\"\n",
-                                "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                "echo \"running cfn init\" \n",
+                                "cfn-init -s ",
                                 {
-                                    "Ref": "InformaticaDomainPassword"
+                                    "Ref": "AWS::StackId"
                                 },
-                                " ",
+                                " -r InfaNode5 ",
+                                "    --region ",
                                 {
-                                    "Ref": "DatabasePassword"
+                                    "Ref": "AWS::Region"
                                 },
-                                " null ",
-                                {
-                                    "Ref": "EncryptionKeyPhrase"
-                                }
+                                "\n"
                             ]
                         ]
                     }
@@ -1517,6 +1629,35 @@
             "Condition": "6NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
             "Type": "AWS::EC2::Instance",
+            "Metadata": {
+                "AWS::CloudFormation::Init": {
+                    "config": {
+                        "commands": {
+                            "1-setup": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                            {
+                                                "Ref": "InformaticaDomainPassword"
+                                            },
+                                            " ",
+                                            {
+                                                "Ref": "DatabasePassword"
+                                            },
+                                            " null ",
+                                            {
+                                                "Ref": "EncryptionKeyPhrase"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },             
             "Properties": {
                 "Tags": [
                     {
@@ -1661,18 +1802,17 @@
                                     ]
                                 },
                                 "\"\n",
-                                "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                "echo \"running cfn init\" \n",
+                                "cfn-init -s ",
                                 {
-                                    "Ref": "InformaticaDomainPassword"
+                                    "Ref": "AWS::StackId"
                                 },
-                                " ",
+                                " -r InfaNode6 ",
+                                "    --region ",
                                 {
-                                    "Ref": "DatabasePassword"
+                                    "Ref": "AWS::Region"
                                 },
-                                " null ",
-                                {
-                                    "Ref": "EncryptionKeyPhrase"
-                                }
+                                "\n"
                             ]
                         ]
                     }
@@ -1693,6 +1833,35 @@
             "Condition": "8NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
             "Type": "AWS::EC2::Instance",
+            "Metadata": {
+                "AWS::CloudFormation::Init": {
+                    "config": {
+                        "commands": {
+                            "1-setup": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                            {
+                                                "Ref": "InformaticaDomainPassword"
+                                            },
+                                            " ",
+                                            {
+                                                "Ref": "DatabasePassword"
+                                            },
+                                            " null ",
+                                            {
+                                                "Ref": "EncryptionKeyPhrase"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }, 
             "Properties": {
                 "Tags": [
                     {
@@ -1837,18 +2006,17 @@
                                     ]
                                 },
                                 "\"\n",
-                                "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                "echo \"running cfn init\" \n",
+                                "cfn-init -s ",
                                 {
-                                    "Ref": "InformaticaDomainPassword"
+                                    "Ref": "AWS::StackId"
                                 },
-                                " ",
+                                " -r InfaNode7",
+                                "    --region ",
                                 {
-                                    "Ref": "DatabasePassword"
+                                    "Ref": "AWS::Region"
                                 },
-                                " null ",
-                                {
-                                    "Ref": "EncryptionKeyPhrase"
-                                }
+                                "\n"
                             ]
                         ]
                     }
@@ -1869,6 +2037,35 @@
             "Condition": "8NodeCondition",
             "DependsOn": "InfaMasterWaitCondition",
             "Type": "AWS::EC2::Instance",
+            "Metadata": {
+                "AWS::CloudFormation::Init": {
+                    "config": {
+                        "commands": {
+                            "1-setup": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                            {
+                                                "Ref": "InformaticaDomainPassword"
+                                            },
+                                            " ",
+                                            {
+                                                "Ref": "DatabasePassword"
+                                            },
+                                            " null ",
+                                            {
+                                                "Ref": "EncryptionKeyPhrase"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },             
             "Properties": {
                 "Tags": [
                     {
@@ -2013,18 +2210,17 @@
                                     ]
                                 },
                                 "\"\n",
-                                "sh /home/ec2-user/InfaEc2Scripts/linInfaInstallerEc2.sh ",
+                                "echo \"running cfn init\" \n",
+                                "cfn-init -s ",
                                 {
-                                    "Ref": "InformaticaDomainPassword"
+                                    "Ref": "AWS::StackId"
                                 },
-                                " ",
+                                " -r InfaNode8 ",
+                                "    --region ",
                                 {
-                                    "Ref": "DatabasePassword"
+                                    "Ref": "AWS::Region"
                                 },
-                                " null ",
-                                {
-                                    "Ref": "EncryptionKeyPhrase"
-                                }
+                                "\n"
                             ]
                         ]
                     }
