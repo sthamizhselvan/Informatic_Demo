@@ -53,13 +53,13 @@
                     "default": "Informatica Database Subnets"
                 },
                 "DatabasePassword": {
-                    "default": "Informatica Database Password"
+                    "default": "Database Password"
                 },
                 "DatabaseType": {
                     "default": "Database Type"
                 },
                 "DatabaseUsername": {
-                    "default": "Informatica Database Username"
+                    "default": "Database Username"
                 },
                 "EncryptionKeyPhrase": {
                     "default": "Encryption Key Phrase"

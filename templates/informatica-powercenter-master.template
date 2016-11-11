@@ -64,19 +64,19 @@
                     "default": "Availability Zones"
                 },
                 "DatabasePassword": {
-                    "default": "Informatica Database Password"
+                    "default": "Database Password"
                 },
                 "DatabaseType": {
                     "default": "Database Type"
                 },
                 "DatabaseUsername": {
-                    "default": "Informatica Database Username"
+                    "default": "Database Username"
                 },
                 "EncryptionKeyPhrase": {
                     "default": "Encryption Key Phrase"
                 },
                 "InformaticaDomainName": {
-                    "default": "PowerCenter Domain Name"
+                    "default": "Informatica Domain Name"
                 },
                 "InformaticaNodeName": {
                     "default": "Informatica Node Prefix"
