@@ -28,6 +28,10 @@
         "ParameterValue": "$[alfred_genpass_18]"
     },
     {
+        "ParameterKey": "InformaticaDomainUsername",
+        "ParameterValue": "Administrator"
+    },
+    {
         "ParameterKey": "InformaticaNodeName",
         "ParameterValue": "PowerCenter"
     },
