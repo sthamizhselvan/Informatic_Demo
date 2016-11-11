@@ -773,38 +773,37 @@
                                 "export JOIN_NODE_NAME=\"Informatica_NotApplicable_NodeName\" \n",
                                 "export DOMAIN_HOST_NAME=\"$HOSTNAME\" \n",
                                 "echo \"running cfn init\" \n",
-                                "cfn-init -s ",
+                                "/opt/aws/bin/cfn-init --stack ",
                                 {
                                     "Ref": "AWS::StackId"
                                 },
-                                " -r InfaMaster ",
-                                "    --region ",
+                                " --resource InfaMaster ",
+                                " --region ",
                                 {
                                     "Ref": "AWS::Region"
                                 },
                                 "\n",
-                                "/opt/aws/bin/cfn-signal -e $? '",
+                                "echo \"running cfn signal\" \n",
+                                "/opt/aws/bin/cfn-signal -e $? ",
+                                " --stack ",
                                 {
-                                    "Ref": "InfaMasterWaitConditionHandle"
+                                    "Ref": "AWS::StackId"
                                 },
-                                "'\n"
+                                " --resource InfaMaster ",
+                                " --region ",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                "\n"
                             ]
                         ]
                     }
                 }
-            }
-        },
-        "InfaMasterWaitConditionHandle": {
-            "Type": "AWS::CloudFormation::WaitConditionHandle"
-        },
-        "InfaMasterWaitCondition": {
-            "DependsOn": "InfaMaster",
-            "Type": "AWS::CloudFormation::WaitCondition",
-            "Properties": {
-                "Handle": {
-                    "Ref": "InfaMasterWaitConditionHandle"
-                },
-                "Timeout": "8000"
+            },
+            "CreationPolicy": {
+                "ResourceSignal": {
+                    "Timeout": "PT2H30M"
+                }
             }
         },
         "InfaNode2EIPAddress": {
@@ -819,7 +818,7 @@
         },
         "InfaNode2": {
             "Condition": "2NodeCondition",
-            "DependsOn": "InfaMasterWaitCondition",
+            "DependsOn": "InfaMaster",
             "Type": "AWS::EC2::Instance",
             "Metadata": {
                 "AWS::CloudFormation::Init": {
@@ -995,12 +994,24 @@
                                 },
                                 "\"\n",
                                 "echo \"running cfn init\" \n",
-                                "cfn-init -s ",
+                                "/opt/aws/bin/cfn-init --stack ",
                                 {
                                     "Ref": "AWS::StackId"
                                 },
-                                " -r InfaNode2 ",
-                                "    --region ",
+                                " --resource InfaNode2 ",
+                                " --region ",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                "\n",
+                                "echo \"running cfn signal\" \n",
+                                "/opt/aws/bin/cfn-signal -e $? ",
+                                " --stack ",
+                                {
+                                    "Ref": "AWS::StackId"
+                                },
+                                " --resource InfaNode2 ",
+                                " --region ",
                                 {
                                     "Ref": "AWS::Region"
                                 },
@@ -1008,6 +1019,11 @@
                             ]
                         ]
                     }
+                }
+            },
+            "CreationPolicy": {
+                "ResourceSignal": {
+                    "Timeout": "PT1H"
                 }
             }
         },
@@ -1023,7 +1039,7 @@
         },
         "InfaNode3": {
             "Condition": "4NodeCondition",
-            "DependsOn": "InfaMasterWaitCondition",
+            "DependsOn": "InfaMaster",
             "Type": "AWS::EC2::Instance",
             "Metadata": {
                 "AWS::CloudFormation::Init": {
@@ -1199,12 +1215,24 @@
                                 },
                                 "\"\n",
                                 "echo \"running cfn init\" \n",
-                                "cfn-init -s ",
+                                "/opt/aws/bin/cfn-init --stack ",
                                 {
                                     "Ref": "AWS::StackId"
                                 },
-                                " -r InfaNode3",
-                                "    --region ",
+                                " --resource InfaNode3 ",
+                                " --region ",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                "\n",
+                                "echo \"running cfn signal\" \n",
+                                "/opt/aws/bin/cfn-signal -e $? ",
+                                " --stack ",
+                                {
+                                    "Ref": "AWS::StackId"
+                                },
+                                " --resource InfaNode3 ",
+                                " --region ",
                                 {
                                     "Ref": "AWS::Region"
                                 },
@@ -1213,7 +1241,13 @@
                         ]
                     }
                 }
+            },
+            "CreationPolicy": {
+                "ResourceSignal": {
+                    "Timeout": "PT1H"
+                }
             }
+
         },
         "InfaNode4EIPAddress": {
             "Condition": "4NodeCondition",
@@ -1227,7 +1261,7 @@
         },
         "InfaNode4": {
             "Condition": "4NodeCondition",
-            "DependsOn": "InfaMasterWaitCondition",
+            "DependsOn": "InfaMaster",
             "Type": "AWS::EC2::Instance",
             "Metadata": {
                 "AWS::CloudFormation::Init": {
@@ -1403,12 +1437,24 @@
                                 },
                                 "\"\n",
                                 "echo \"running cfn init\" \n",
-                                "cfn-init -s ",
+                                "/opt/aws/bin/cfn-init --stack ",
                                 {
                                     "Ref": "AWS::StackId"
                                 },
-                                " -r InfaNode4",
-                                "    --region ",
+                                " --resource InfaNode4 ",
+                                " --region ",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                "\n",
+                                "echo \"running cfn signal\" \n",
+                                "/opt/aws/bin/cfn-signal -e $? ",
+                                " --stack ",
+                                {
+                                    "Ref": "AWS::StackId"
+                                },
+                                " --resource InfaNode4 ",
+                                " --region ",
                                 {
                                     "Ref": "AWS::Region"
                                 },
@@ -1417,7 +1463,13 @@
                         ]
                     }
                 }
+            },
+            "CreationPolicy": {
+                "ResourceSignal": {
+                    "Timeout": "PT1H"
+                }
             }
+
         },
         "InfaNode5EIPAddress": {
             "Condition": "6NodeCondition",
@@ -1431,7 +1483,7 @@
         },
         "InfaNode5": {
             "Condition": "6NodeCondition",
-            "DependsOn": "InfaMasterWaitCondition",
+            "DependsOn": "InfaMaster",
             "Type": "AWS::EC2::Instance",
             "Metadata": {
                 "AWS::CloudFormation::Init": {
@@ -1607,12 +1659,24 @@
                                 },
                                 "\"\n",
                                 "echo \"running cfn init\" \n",
-                                "cfn-init -s ",
+                                "/opt/aws/bin/cfn-init --stack ",
                                 {
                                     "Ref": "AWS::StackId"
                                 },
-                                " -r InfaNode5 ",
-                                "    --region ",
+                                " --resource InfaNode5 ",
+                                " --region ",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                "\n",
+                                "echo \"running cfn signal\" \n",
+                                "/opt/aws/bin/cfn-signal -e $? ",
+                                " --stack ",
+                                {
+                                    "Ref": "AWS::StackId"
+                                },
+                                " --resource InfaNode5 ",
+                                " --region ",
                                 {
                                     "Ref": "AWS::Region"
                                 },
@@ -1621,7 +1685,13 @@
                         ]
                     }
                 }
+            },
+            "CreationPolicy": {
+                "ResourceSignal": {
+                    "Timeout": "PT1H"
+                }
             }
+
         },
         "InfaNode6EIPAddress": {
             "Condition": "6NodeCondition",
@@ -1635,7 +1705,7 @@
         },
         "InfaNode6": {
             "Condition": "6NodeCondition",
-            "DependsOn": "InfaMasterWaitCondition",
+            "DependsOn": "InfaMaster",
             "Type": "AWS::EC2::Instance",
             "Metadata": {
                 "AWS::CloudFormation::Init": {
@@ -1811,12 +1881,24 @@
                                 },
                                 "\"\n",
                                 "echo \"running cfn init\" \n",
-                                "cfn-init -s ",
+                                "/opt/aws/bin/cfn-init --stack ",
                                 {
                                     "Ref": "AWS::StackId"
                                 },
-                                " -r InfaNode6 ",
-                                "    --region ",
+                                " --resource InfaNode6 ",
+                                " --region ",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                "\n",
+                                "echo \"running cfn signal\" \n",
+                                "/opt/aws/bin/cfn-signal -e $? ",
+                                " --stack ",
+                                {
+                                    "Ref": "AWS::StackId"
+                                },
+                                " --resource InfaNode6 ",
+                                " --region ",
                                 {
                                     "Ref": "AWS::Region"
                                 },
@@ -1825,7 +1907,13 @@
                         ]
                     }
                 }
+            },
+            "CreationPolicy": {
+                "ResourceSignal": {
+                    "Timeout": "PT1H"
+                }
             }
+
         },
         "InfaNode7EIPAddress": {
             "Condition": "8NodeCondition",
@@ -1839,7 +1927,7 @@
         },
         "InfaNode7": {
             "Condition": "8NodeCondition",
-            "DependsOn": "InfaMasterWaitCondition",
+            "DependsOn": "InfaMaster",
             "Type": "AWS::EC2::Instance",
             "Metadata": {
                 "AWS::CloudFormation::Init": {
@@ -2015,12 +2103,24 @@
                                 },
                                 "\"\n",
                                 "echo \"running cfn init\" \n",
-                                "cfn-init -s ",
+                                "/opt/aws/bin/cfn-init --stack ",
                                 {
                                     "Ref": "AWS::StackId"
                                 },
-                                " -r InfaNode7",
-                                "    --region ",
+                                " --resource InfaNode7 ",
+                                " --region ",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                "\n",
+                                "echo \"running cfn signal\" \n",
+                                "/opt/aws/bin/cfn-signal -e $? ",
+                                " --stack ",
+                                {
+                                    "Ref": "AWS::StackId"
+                                },
+                                " --resource InfaNode7 ",
+                                " --region ",
                                 {
                                     "Ref": "AWS::Region"
                                 },
@@ -2029,7 +2129,13 @@
                         ]
                     }
                 }
+            },
+            "CreationPolicy": {
+                "ResourceSignal": {
+                    "Timeout": "PT1H"
+                }
             }
+
         },
         "InfaNode8EIPAddress": {
             "Condition": "8NodeCondition",
@@ -2043,7 +2149,7 @@
         },
         "InfaNode8": {
             "Condition": "8NodeCondition",
-            "DependsOn": "InfaMasterWaitCondition",
+            "DependsOn": "InfaMaster",
             "Type": "AWS::EC2::Instance",
             "Metadata": {
                 "AWS::CloudFormation::Init": {
@@ -2219,12 +2325,24 @@
                                 },
                                 "\"\n",
                                 "echo \"running cfn init\" \n",
-                                "cfn-init -s ",
+                                "/opt/aws/bin/cfn-init --stack ",
                                 {
                                     "Ref": "AWS::StackId"
                                 },
-                                " -r InfaNode8 ",
-                                "    --region ",
+                                " --resource InfaNode8 ",
+                                " --region ",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                "\n",
+                                "echo \"running cfn signal\" \n",
+                                "/opt/aws/bin/cfn-signal -e $? ",
+                                " --stack ",
+                                {
+                                    "Ref": "AWS::StackId"
+                                },
+                                " --resource InfaNode8 ",
+                                " --region ",
                                 {
                                     "Ref": "AWS::Region"
                                 },
@@ -2233,7 +2351,13 @@
                         ]
                     }
                 }
+            },
+            "CreationPolicy": {
+                "ResourceSignal": {
+                    "Timeout": "PT1H"
+                }
             }
+
         }
     },
     "Outputs": {
