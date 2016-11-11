@@ -191,10 +191,6 @@
         },
         "PowerCenterInstanceType": {
             "AllowedValues": [
-                "c3.xlarge",
-                "c3.2xlarge",
-                "c3.4xlarge",
-                "c3.8xlarge",
                 "c4.xlarge",
                 "c4.2xlarge",
                 "c4.4xlarge",
