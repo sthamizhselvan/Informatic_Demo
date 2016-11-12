@@ -24,6 +24,7 @@
                     },
                     "Parameters": [
                         "KeyPairName",
+                        "PowerCenterOS",
                         "PowerCenterInstanceType",
                         "NumberOfPowerCenterInstances"
                     ]
@@ -91,6 +92,9 @@
                 "KeyPairName": {
                     "default": "Key Pair Name"
                 },
+                "PowerCenterOS": {
+                    "default": "Operating System"
+                },
                 "PowerCenterInstanceType": {
                     "default": "Informatica Domain Instance Type"
                 },
@@ -126,11 +130,11 @@
     },
     "Parameters": {
         "AvailabilityZones": {
-            "Description": "List of Availability Zones to use for the subnets in the VPC. Note: The logical order is preserved and only 2 AZs are used for this deployment.",
+            "Description": "List of Availability Zones to use for the subnets in the VPC. Note: The logical order is preserved and only 2 AZs are used for this deployment",
             "Type": "List<AWS::EC2::AvailabilityZone::Name>"
         },
         "DatabasePassword": {
-            "Description": "Password for the Amazon RDS database account.",
+            "Description": "Password for the Amazon RDS database account",
             "MaxLength": "30",
             "MinLength": "8",
             "NoEcho": "true",
@@ -175,7 +179,7 @@
             "MaxLength": "20"
         },
         "InformaticaDomainUsername": {
-            "Description": "Username for the Informatica Domain.",
+            "Description": "Username for the Informatica Domain",
             "AllowedValues" : ["Administrator"],
             "Default": "Administrator",
             "MaxLength": "32",
@@ -187,6 +191,13 @@
             "MaxLength": "32",
             "MinLength": "8",
             "NoEcho": "true",
+            "Type": "String"
+        },
+        "PowerCenterOS" : {
+            "Description": "Operation System on which Informatica Domain will be deployed",
+            "AllowedValues": ["Windows Server", "Red Hat Enterprise Linux"],
+            "MaxLength": "32",
+            "MinLength": "8",
             "Type": "String"
         },
         "PowerCenterInstanceType": {
