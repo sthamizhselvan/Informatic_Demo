@@ -148,7 +148,7 @@
             "Description": "Prefix for the Nodes in Informatica Domain. Node number will be the suffix for the nodes. Eg PowerCenterNode1, PowerCenterNode2",
             "Type": "String",
             "Default": "PowerCenter",
-            "MinLength": "4",
+            "MinLength": "2",
             "MaxLength": "20"
         },
         "InformaticaDomainUsername": {
