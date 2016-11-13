@@ -552,8 +552,8 @@
                 "SecurityGroupIngress": [
                     {
                         "IpProtocol": "tcp",
-                        "FromPort": "22",
-                        "ToPort": "22",
+                        "FromPort": "3389",
+                        "ToPort": "3389",
                         "CidrIp": {
                             "Ref": "RemoteAccessCIDR"
                         }
@@ -805,7 +805,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT2H30M"
+                    "Timeout": "PT3H"
                 }
             }
         },
@@ -916,7 +916,8 @@
                                     ]
                                 },
                                 "\"\n",
-                                "$env:DB_PORT=\""{
+                                "$env:DB_PORT=\"",
+                                {
                                     "Fn::GetAtt": [
                                         "RDSInstance",
                                         "Endpoint.Port"
@@ -1246,7 +1247,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT3H30M"
                 }
             }
         },
@@ -1467,7 +1468,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT3H30M"
                 }
             }
         },
@@ -1688,7 +1689,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT3H30M"
                 }
             }
         },
@@ -1871,7 +1872,6 @@
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_HOST_NAME=\"",
-                                ,
                                 {
                                     "Fn::GetAtt": [
                                         "InfaMaster",
@@ -1910,7 +1910,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT3H30M"
                 }
             }
         },
@@ -2131,7 +2131,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT3H30M"
                 }
             }
         },
@@ -2352,7 +2352,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT3H30M"
                 }
             }
         }
