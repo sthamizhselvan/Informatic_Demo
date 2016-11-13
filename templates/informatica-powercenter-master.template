@@ -167,7 +167,7 @@
         "InformaticaDomainName": {
             "Description": "Name for the Informatica Domain",
             "Type": "String",
-            "Default": "Infa_Domain",
+            "Default": "InfaDomain",
             "MinLength": "4",
             "MaxLength": "20"
         },
@@ -180,7 +180,9 @@
         },
         "InformaticaDomainUsername": {
             "Description": "Username for the Informatica Domain",
-            "AllowedValues" : ["Administrator"],
+            "AllowedValues": [
+                "Administrator"
+            ],
             "Default": "Administrator",
             "MaxLength": "32",
             "MinLength": "8",
@@ -193,9 +195,13 @@
             "NoEcho": "true",
             "Type": "String"
         },
-        "PowerCenterOS" : {
+        "PowerCenterOS": {
             "Description": "Operation System on which Informatica Domain will be deployed",
-            "AllowedValues": ["Windows Server", "Red Hat Enterprise Linux"],
+            "AllowedValues": [
+                "Windows Server",
+                "Red Hat Enterprise Linux"
+            ],
+            "Default" : "Windows Server",
             "MaxLength": "32",
             "MinLength": "8",
             "Type": "String"
@@ -344,6 +350,16 @@
             }
         }
     },
+    "Conditions": {
+        "InfaOnWindows": {
+            "Fn::Equals": [
+                {
+                    "Ref": "PowerCenterOS"
+                },
+                "Windows Server"
+            ]
+        }
+    },
     "Resources": {
         "VPCStack": {
             "Type": "AWS::CloudFormation::Stack",
@@ -426,7 +442,13 @@
                             {
                                 "Ref": "QSS3KeyPrefix"
                             },
-                            "templates/informatica-powercenter.template"
+                            {
+                                "Fn::If": [
+                                    "InfaOnWindows",
+                                    "templates/informatica-powercenter-windows.template",
+                                    "templates/informatica-powercenter.template"
+                                ]
+                            }
                         ]
                     ]
                 },

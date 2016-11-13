@@ -140,7 +140,7 @@
         "InformaticaDomainName": {
             "Description": "Name for the Informatica Domain.",
             "Type": "String",
-            "Default": "Infa_Domain",
+            "Default": "InfaDomain",
             "MinLength": "4",
             "MaxLength": "20"
         },
