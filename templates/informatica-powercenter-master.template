@@ -201,7 +201,7 @@
                 "Windows Server",
                 "Red Hat Enterprise Linux"
             ],
-            "Default" : "Windows Server",
+            "Default": "Windows Server",
             "MaxLength": "32",
             "MinLength": "8",
             "Type": "String"

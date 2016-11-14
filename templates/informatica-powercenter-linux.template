@@ -73,7 +73,7 @@
                 },
                 "InformaticaDomainUsername": {
                     "default": "Informatica Administrator Username"
-                },                
+                },
                 "InformaticaDomainPassword": {
                     "default": "Informatica Administrator Password"
                 },
@@ -153,12 +153,14 @@
         },
         "InformaticaDomainUsername": {
             "Description": "Username for the Informatica Domain.",
-            "AllowedValues" : ["Administrator"],
+            "AllowedValues": [
+                "Administrator"
+            ],
             "Default": "Administrator",
             "MaxLength": "32",
             "MinLength": "8",
             "Type": "String"
-        },        
+        },
         "InformaticaDomainPassword": {
             "Description": "Password for the Informatica Domain. Administrator is the default Username for Informatica Domain",
             "NoEcho": "True",
@@ -854,7 +856,7 @@
                         }
                     }
                 }
-            },            
+            },
             "Properties": {
                 "Tags": [
                     {
@@ -1075,7 +1077,7 @@
                         }
                     }
                 }
-            },             
+            },
             "Properties": {
                 "Tags": [
                     {
@@ -1253,7 +1255,6 @@
                     "Timeout": "PT3H"
                 }
             }
-
         },
         "InfaNode4EIPAddress": {
             "Condition": "4NodeCondition",
@@ -1297,7 +1298,7 @@
                         }
                     }
                 }
-            },             
+            },
             "Properties": {
                 "Tags": [
                     {
@@ -1475,7 +1476,6 @@
                     "Timeout": "PT3H"
                 }
             }
-
         },
         "InfaNode5EIPAddress": {
             "Condition": "6NodeCondition",
@@ -1519,7 +1519,7 @@
                         }
                     }
                 }
-            },             
+            },
             "Properties": {
                 "Tags": [
                     {
@@ -1697,7 +1697,6 @@
                     "Timeout": "PT3H"
                 }
             }
-
         },
         "InfaNode6EIPAddress": {
             "Condition": "6NodeCondition",
@@ -1741,7 +1740,7 @@
                         }
                     }
                 }
-            },             
+            },
             "Properties": {
                 "Tags": [
                     {
@@ -1919,7 +1918,6 @@
                     "Timeout": "PT3H"
                 }
             }
-
         },
         "InfaNode7EIPAddress": {
             "Condition": "8NodeCondition",
@@ -1963,7 +1961,7 @@
                         }
                     }
                 }
-            }, 
+            },
             "Properties": {
                 "Tags": [
                     {
@@ -2141,7 +2139,6 @@
                     "Timeout": "PT3H"
                 }
             }
-
         },
         "InfaNode8EIPAddress": {
             "Condition": "8NodeCondition",
@@ -2185,7 +2182,7 @@
                         }
                     }
                 }
-            },             
+            },
             "Properties": {
                 "Tags": [
                     {
@@ -2363,7 +2360,6 @@
                     "Timeout": "PT3H"
                 }
             }
-
         }
     },
     "Outputs": {
