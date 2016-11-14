@@ -240,43 +240,43 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "INFORMATICAPCHVM": "10.1_Linux_Server_2-b1c14762-8f3f-41df-ae2c-91adee508cf9-ami-8dd0589a.3"
+                "INFORMATICAPCLNXHVM": "10.1_Linux_Server_2-b1c14762-8f3f-41df-ae2c-91adee508cf9-ami-8dd0589a.3"
             },
             "ap-northeast-1": {
-                "INFORMATICAPCHVM": "ami-46985027"
+                "INFORMATICAPCLNXHVM": "ami-46985027"
             },
             "ap-northeast-2": {
-                "INFORMATICAPCHVM": "TBD"
+                "INFORMATICAPCLNXHVM": "TBD"
             },
             "ap-south-1": {
-                "INFORMATICAPCHVM": "TBD"
+                "INFORMATICAPCLNXHVM": "TBD"
             },
             "ap-southeast-1": {
-                "INFORMATICAPCHVM": "ami-6a7ea609"
+                "INFORMATICAPCLNXHVM": "ami-6a7ea609"
             },
             "ap-southeast-2": {
-                "INFORMATICAPCHVM": "ami-a22016c1"
+                "INFORMATICAPCLNXHVM": "ami-a22016c1"
             },
             "eu-central-1": {
-                "INFORMATICAPCHVM": "ami-f819e997"
+                "INFORMATICAPCLNXHVM": "ami-f819e997"
             },
             "eu-west-1": {
-                "INFORMATICAPCHVM": "ami-9a9dede9"
+                "INFORMATICAPCLNXHVM": "ami-9a9dede9"
             },
             "sa-east-1": {
-                "INFORMATICAPCHVM": "ami-1064f57c"
+                "INFORMATICAPCLNXHVM": "ami-1064f57c"
             },
             "us-east-1": {
-                "INFORMATICAPCHVM": "ami-42cda155"
+                "INFORMATICAPCLNXHVM": "ami-42cda155"
             },
             "us-east-2": {
-                "INFORMATICAPCHVM": "TBD"
+                "INFORMATICAPCLNXHVM": "TBD"
             },
             "us-west-1": {
-                "INFORMATICAPCHVM": "ami-8e83ceee"
+                "INFORMATICAPCLNXHVM": "ami-8e83ceee"
             },
             "us-west-2": {
-                "INFORMATICAPCHVM": "ami-71f72111"
+                "INFORMATICAPCLNXHVM": "ami-71f72111"
             }
         },
         "AWSInfoRegionMap": {
@@ -662,7 +662,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCHVM"
+                        "INFORMATICAPCLNXHVM"
                     ]
                 },
                 "SubnetId": {
@@ -878,7 +878,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCHVM"
+                        "INFORMATICAPCLNXHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1099,7 +1099,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCHVM"
+                        "INFORMATICAPCLNXHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1321,7 +1321,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCHVM"
+                        "INFORMATICAPCLNXHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1543,7 +1543,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCHVM"
+                        "INFORMATICAPCLNXHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1765,7 +1765,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCHVM"
+                        "INFORMATICAPCLNXHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1987,7 +1987,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCHVM"
+                        "INFORMATICAPCLNXHVM"
                     ]
                 },
                 "SubnetId": {
@@ -2209,7 +2209,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCHVM"
+                        "INFORMATICAPCLNXHVM"
                     ]
                 },
                 "SubnetId": {
