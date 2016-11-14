@@ -245,7 +245,7 @@
                 "INFORMATICAPCWINHVM": "10.1_Windows_Server_3-73eb10f0-ef93-494a-bff4-de78cbe56fcb-ami-82c04d95.3"
             },
             "ap-northeast-1": {
-                "INFORMATICAPCWINHVM": "ami-82c04d95"
+                "INFORMATICAPCWINHVM": "ami-26ce0647"
             },
             "ap-northeast-2": {
                 "INFORMATICAPCWINHVM": "TBD"
@@ -254,31 +254,31 @@
                 "INFORMATICAPCWINHVM": "TBD"
             },
             "ap-southeast-1": {
-                "INFORMATICAPCWINHVM": "ami-82c04d95"
+                "INFORMATICAPCWINHVM": "ami-7d449c1e"
             },
             "ap-southeast-2": {
-                "INFORMATICAPCWINHVM": "ami-82c04d95"
+                "INFORMATICAPCWINHVM": "ami-0a380e69"
             },
             "eu-central-1": {
-                "INFORMATICAPCWINHVM": "ami-82c04d95"
+                "INFORMATICAPCWINHVM": "ami-dc08f8b3"
             },
             "eu-west-1": {
-                "INFORMATICAPCWINHVM": "ami-82c04d95"
+                "INFORMATICAPCWINHVM": "ami-2efa8a5d"
             },
             "sa-east-1": {
-                "INFORMATICAPCWINHVM": "ami-82c04d95"
+                "INFORMATICAPCWINHVM": "ami-e877e684"
             },
             "us-east-1": {
-                "INFORMATICAPCWINHVM": "ami-82c04d95"
+                "INFORMATICAPCWINHVM": "ami-97325d80"
             },
             "us-east-2": {
                 "INFORMATICAPCWINHVM": "TBD"
             },
             "us-west-1": {
-                "INFORMATICAPCWINHVM": "ami-82c04d95"
+                "INFORMATICAPCWINHVM": "ami-92723ff2"
             },
             "us-west-2": {
-                "INFORMATICAPCWINHVM": "ami-82c04d95"
+                "INFORMATICAPCWINHVM": "ami-cea87eae"
             }
         },
         "AWSInfoRegionMap": {
