@@ -1032,7 +1032,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H30M"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -1253,7 +1253,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H30M"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -1474,7 +1474,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H30M"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -1695,7 +1695,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H30M"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -1916,7 +1916,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H30M"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -2137,7 +2137,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H30M"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -2358,7 +2358,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H30M"
+                    "Timeout": "PT2H30M"
                 }
             }
         }
