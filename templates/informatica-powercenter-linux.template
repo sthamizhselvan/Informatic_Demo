@@ -242,43 +242,43 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "INFORMATICAPCLNXHVM": "10.1_Linux_Server_2-b1c14762-8f3f-41df-ae2c-91adee508cf9-ami-8dd0589a.3"
+                "INFORMATICAPCRHELHVM": "10.1_Linux_Server_2-b1c14762-8f3f-41df-ae2c-91adee508cf9-ami-8dd0589a.3"
             },
             "ap-northeast-1": {
-                "INFORMATICAPCLNXHVM": "ami-46985027"
+                "INFORMATICAPCRHELHVM": "ami-46985027"
             },
             "ap-northeast-2": {
-                "INFORMATICAPCLNXHVM": "TBD"
+                "INFORMATICAPCRHELHVM": "TBD"
             },
             "ap-south-1": {
-                "INFORMATICAPCLNXHVM": "TBD"
+                "INFORMATICAPCRHELHVM": "TBD"
             },
             "ap-southeast-1": {
-                "INFORMATICAPCLNXHVM": "ami-6a7ea609"
+                "INFORMATICAPCRHELHVM": "ami-6a7ea609"
             },
             "ap-southeast-2": {
-                "INFORMATICAPCLNXHVM": "ami-a22016c1"
+                "INFORMATICAPCRHELHVM": "ami-a22016c1"
             },
             "eu-central-1": {
-                "INFORMATICAPCLNXHVM": "ami-f819e997"
+                "INFORMATICAPCRHELHVM": "ami-f819e997"
             },
             "eu-west-1": {
-                "INFORMATICAPCLNXHVM": "ami-9a9dede9"
+                "INFORMATICAPCRHELHVM": "ami-9a9dede9"
             },
             "sa-east-1": {
-                "INFORMATICAPCLNXHVM": "ami-1064f57c"
+                "INFORMATICAPCRHELHVM": "ami-1064f57c"
             },
             "us-east-1": {
-                "INFORMATICAPCLNXHVM": "ami-42cda155"
+                "INFORMATICAPCRHELHVM": "ami-42cda155"
             },
             "us-east-2": {
-                "INFORMATICAPCLNXHVM": "TBD"
+                "INFORMATICAPCRHELHVM": "TBD"
             },
             "us-west-1": {
-                "INFORMATICAPCLNXHVM": "ami-8e83ceee"
+                "INFORMATICAPCRHELHVM": "ami-8e83ceee"
             },
             "us-west-2": {
-                "INFORMATICAPCLNXHVM": "ami-71f72111"
+                "INFORMATICAPCRHELHVM": "ami-71f72111"
             }
         },
         "AWSInfoRegionMap": {
@@ -664,7 +664,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCLNXHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -810,7 +810,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT2H30M"
+                    "Timeout": "PT3H"
                 }
             }
         },
@@ -880,7 +880,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCLNXHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1031,7 +1031,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -1101,7 +1101,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCLNXHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1252,7 +1252,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -1322,7 +1322,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCLNXHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1473,7 +1473,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -1543,7 +1543,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCLNXHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1694,7 +1694,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -1764,7 +1764,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCLNXHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1915,7 +1915,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -1985,7 +1985,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCLNXHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -2136,7 +2136,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT2H30M"
                 }
             }
         },
@@ -2206,7 +2206,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCLNXHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -2357,7 +2357,7 @@
             },
             "CreationPolicy": {
                 "ResourceSignal": {
-                    "Timeout": "PT3H"
+                    "Timeout": "PT2H30M"
                 }
             }
         }
