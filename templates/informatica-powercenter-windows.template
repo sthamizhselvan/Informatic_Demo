@@ -348,6 +348,12 @@
                 "LicenseModel": "bring-your-own-license",
                 "AllocatedStorage": "50",
                 "Port": 1521
+            },
+            "OracleSE": {
+                "Engine": "oracle-se1",
+                "LicenseModel": "license-included",
+                "AllocatedStorage": "50",
+                "Port": 1521
             }
         }
     },
@@ -2223,13 +2229,13 @@
                         "Fn::Join": [
                             "",
                             [
-                          "<powershell>\n",
-                "echo \"Initializing variables\" \n",
-                "$env:CREATE_DOMAIN=0 \n",
-                "$env:JOIN_DOMAIN=1 \n",
-                "$env:SERVES_AS_GATEWAY=1",
+                                "<powershell>\n",
+                                "echo \"Initializing variables\" \n",
+                                "$env:CREATE_DOMAIN=0 \n",
+                                "$env:JOIN_DOMAIN=1 \n",
+                                "$env:SERVES_AS_GATEWAY=1",
                                 "\n",
-                               "$env:DB_TYPE=\"",
+                                "$env:DB_TYPE=\"",
                                 {
                                     "Ref": "DatabaseType"
                                 },
@@ -2242,7 +2248,7 @@
                                     ]
                                 },
                                 "\"\n",
-                              "$env:DB_PORT=\"",
+                                "$env:DB_PORT=\"",
                                 {
                                     "Fn::GetAtt": [
                                         "RDSInstance",
@@ -2255,7 +2261,7 @@
                                     "Ref": "DatabaseUsername"
                                 },
                                 "\"\n",
-                             "$env:DB_SERVICENAME=\"",
+                                "$env:DB_SERVICENAME=\"",
                                 {
                                     "Fn::FindInMap": [
                                         "Config",
@@ -2264,12 +2270,12 @@
                                     ]
                                 },
                                 "\"\n",
-                               "$env:DOMAIN_NAME=\"",
+                                "$env:DOMAIN_NAME=\"",
                                 {
                                     "Ref": "InformaticaDomainName"
                                 },
                                 "\"\n",
-                               "$env:NODE_NAME=\"",
+                                "$env:NODE_NAME=\"",
                                 {
                                     "Fn::Join": [
                                         "",
@@ -2282,7 +2288,7 @@
                                     ]
                                 },
                                 "\"\n",
-                                 "$env:GRID_NAME=\"",
+                                "$env:GRID_NAME=\"",
                                 {
                                     "Fn::FindInMap": [
                                         "Config",
@@ -2304,7 +2310,7 @@
                                     ]
                                 },
                                 "\"\n",
-                                      "$env:INTEGRATION_SERVICE_NAME=\"",
+                                "$env:INTEGRATION_SERVICE_NAME=\"",
                                 {
                                     "Fn::FindInMap": [
                                         "Config",
@@ -2397,6 +2403,5 @@
             },
             "Description": "RDS Instance ID"
         }
-    }        
-
+    }
 }
