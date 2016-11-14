@@ -48,6 +48,10 @@
         "ParameterValue": "c4.2xlarge"
     },
     {
+        "ParameterKey": "PowerCenterOS",
+        "ParameterValue": "Red Hat Enterprise Linux"
+    },
+    {
         "ParameterKey": "PrivateSubnet1CIDR",
         "ParameterValue": "10.0.0.0/19"
     },
