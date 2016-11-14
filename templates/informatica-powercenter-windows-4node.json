@@ -1,0 +1,78 @@
+[
+    {
+        "ParameterKey": "AvailabilityZones",
+        "ParameterValue": "$[alfred_genaz_2]"
+    },
+    {
+        "ParameterKey": "DatabasePassword",
+        "ParameterValue": "$[alfred_genpass_18]"
+    },
+    {
+        "ParameterKey": "DatabaseType",
+        "ParameterValue": "Oracle"
+    },
+    {
+        "ParameterKey": "DatabaseUsername",
+        "ParameterValue": "dbadministrator"
+    },
+    {
+        "ParameterKey": "EncryptionKeyPhrase",
+        "ParameterValue": "$[alfred_genpass_20]"
+    },
+    {
+        "ParameterKey": "InformaticaDomainName",
+        "ParameterValue": "InfaDomain"
+    },
+    {
+        "ParameterKey": "InformaticaDomainPassword",
+        "ParameterValue": "$[alfred_genpass_18]"
+    },
+    {
+        "ParameterKey": "InformaticaDomainUsername",
+        "ParameterValue": "Administrator"
+    },
+    {
+        "ParameterKey": "InformaticaNodeName",
+        "ParameterValue": "PowerCenter"
+    },
+    {
+        "ParameterKey": "KeyPairName",
+        "ParameterValue": "cikey"
+    },
+    {
+        "ParameterKey": "NumberOfPowerCenterInstances",
+        "ParameterValue": "4"
+    },
+    {
+        "ParameterKey": "PowerCenterInstanceType",
+        "ParameterValue": "c4.2xlarge"
+    },
+    {
+        "ParameterKey": "PowerCenterOS",
+        "ParameterValue": "Windows Server"
+    },
+    {
+        "ParameterKey": "PrivateSubnet1CIDR",
+        "ParameterValue": "10.0.0.0/19"
+    },
+    {
+        "ParameterKey": "PrivateSubnet2CIDR",
+        "ParameterValue": "10.0.32.0/19"
+    },
+    {
+        "ParameterKey": "PublicSubnet1CIDR",
+        "ParameterValue": "10.0.128.0/20"
+    },
+    {
+        "ParameterKey": "PublicSubnet2CIDR",
+        "ParameterValue": "10.0.144.0/20"
+    },
+    {
+        "ParameterKey": "RemoteAccessCIDR",
+        "ParameterValue": "10.0.0.0/16"
+    },
+    {
+        "ParameterKey": "VPCCIDR",
+        "ParameterValue": "10.0.0.0/16"
+    }
+]
