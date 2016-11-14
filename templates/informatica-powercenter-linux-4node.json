@@ -21,7 +21,7 @@
     },
     {
         "ParameterKey": "InformaticaDomainName",
-        "ParameterValue": "Infa_Domain"
+        "ParameterValue": "InfaDomain"
     },
     {
         "ParameterKey": "InformaticaDomainPassword",
