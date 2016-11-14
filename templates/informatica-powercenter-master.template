@@ -446,7 +446,7 @@
                                 "Fn::If": [
                                     "InfaOnWindows",
                                     "templates/informatica-powercenter-windows.template",
-                                    "templates/informatica-powercenter.template"
+                                    "templates/informatica-powercenter-linux.template"
                                 ]
                             }
                         ]
