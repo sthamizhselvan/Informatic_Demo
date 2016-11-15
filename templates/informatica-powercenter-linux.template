@@ -344,12 +344,6 @@
                 "GridName": "InfaDefaultGrid"
             },
             "Oracle": {
-                "Engine": "oracle-ee",
-                "LicenseModel": "bring-your-own-license",
-                "AllocatedStorage": "50",
-                "Port": 1521
-            },
-            "OracleSE": {
                 "Engine": "oracle-se1",
                 "LicenseModel": "license-included",
                 "AllocatedStorage": "50",
