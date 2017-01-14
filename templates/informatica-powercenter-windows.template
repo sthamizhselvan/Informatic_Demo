@@ -242,43 +242,43 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "INFORMATICAPCWINHVM": "10.1_Windows_Server_3-73eb10f0-ef93-494a-bff4-de78cbe56fcb-ami-82c04d95.3"
+                "INFAPCWINHVM": "10.1_Windows_Server_3-73eb10f0-ef93-494a-bff4-de78cbe56fcb-ami-82c04d95.3"
             },
             "ap-northeast-1": {
-                "INFORMATICAPCWINHVM": "ami-26ce0647"
+                "INFAPCWINHVM": "ami-26ce0647"
             },
             "ap-northeast-2": {
-                "INFORMATICAPCWINHVM": "TBD"
+                "INFAPCWINHVM": "TBD"
             },
             "ap-south-1": {
-                "INFORMATICAPCWINHVM": "TBD"
+                "INFAPCWINHVM": "TBD"
             },
             "ap-southeast-1": {
-                "INFORMATICAPCWINHVM": "ami-7d449c1e"
+                "INFAPCWINHVM": "ami-7d449c1e"
             },
             "ap-southeast-2": {
-                "INFORMATICAPCWINHVM": "ami-0a380e69"
+                "INFAPCWINHVM": "ami-0a380e69"
             },
             "eu-central-1": {
-                "INFORMATICAPCWINHVM": "ami-dc08f8b3"
+                "INFAPCWINHVM": "ami-dc08f8b3"
             },
             "eu-west-1": {
-                "INFORMATICAPCWINHVM": "ami-2efa8a5d"
+                "INFAPCWINHVM": "ami-2efa8a5d"
             },
             "sa-east-1": {
-                "INFORMATICAPCWINHVM": "ami-e877e684"
+                "INFAPCWINHVM": "ami-e877e684"
             },
             "us-east-1": {
-                "INFORMATICAPCWINHVM": "ami-97325d80"
+                "INFAPCWINHVM": "ami-97325d80"
             },
             "us-east-2": {
-                "INFORMATICAPCWINHVM": "TBD"
+                "INFAPCWINHVM": "TBD"
             },
             "us-west-1": {
-                "INFORMATICAPCWINHVM": "ami-92723ff2"
+                "INFAPCWINHVM": "ami-92723ff2"
             },
             "us-west-2": {
-                "INFORMATICAPCWINHVM": "ami-cea87eae"
+                "INFAPCWINHVM": "ami-cea87eae"
             }
         },
         "AWSInfoRegionMap": {
@@ -658,7 +658,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCWINHVM"
+                        "INFAPCWINHVM"
                     ]
                 },
                 "SubnetId": {
@@ -875,7 +875,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCWINHVM"
+                        "INFAPCWINHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1096,7 +1096,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCWINHVM"
+                        "INFAPCWINHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1317,7 +1317,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCWINHVM"
+                        "INFAPCWINHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1538,7 +1538,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCWINHVM"
+                        "INFAPCWINHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1759,7 +1759,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCWINHVM"
+                        "INFAPCWINHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1980,7 +1980,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCWINHVM"
+                        "INFAPCWINHVM"
                     ]
                 },
                 "SubnetId": {
@@ -2201,7 +2201,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCWINHVM"
+                        "INFAPCWINHVM"
                     ]
                 },
                 "SubnetId": {
