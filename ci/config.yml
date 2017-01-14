@@ -23,7 +23,7 @@ tests:
   linux-4node:
     parameter_input: informatica-powercenter-linux-4node.json
     regions:
-      - us-west-2
+      - eu-central-1
     template_file: informatica-powercenter-master.template
   windows-1node:
     parameter_input: informatica-powercenter-windows-1node.json
@@ -31,5 +31,5 @@ tests:
   windows-4node:
     parameter_input: informatica-powercenter-windows-4node.json
     regions:
-      - eu-west-1
+      - eu-central-1
     template_file: informatica-powercenter-master.template
