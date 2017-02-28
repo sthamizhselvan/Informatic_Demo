@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "AWS Cloud Formation Template for deploying Informatica PowerCenter Version 10.1.0 on EC2 RHEL7.0 instances. This template uses an existing VPC and two Private and Public subnets. It deploys an Instance of Amazon RDS with Oracle Database on the Private Subnet. The Informatica PowerCenter Instances are deployed in the Public Subnet. The template deploys resources over two Availability Zones. QS(5015)",
+    "Description": "AWS Cloud Formation Template for deploying Informatica PowerCenter Version 10.1 on EC2 RHEL7.0 instances. This template uses an existing VPC and two Private and Public subnets. It deploys an Instance of Amazon RDS with Oracle Database on the Private Subnet. The Informatica PowerCenter Instances are deployed in the Public Subnet. The template deploys resources over two Availability Zones. QS(5015)",
     "Metadata": {
         "AWS::CloudFormation::Interface": {
             "ParameterGroups": [
@@ -242,43 +242,49 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "INFAPCRHELHVM": "10.1_Linux_Server_2-b1c14762-8f3f-41df-ae2c-91adee508cf9-ami-8dd0589a.3"
+                "INFAPCRHELHVM": "Informatica-PowerCenter-10.1.1-RHEL7-b1c14762-8f3f-41df-ae2c-91adee508cf9-ami-8c5fab9a.4"
             },
             "ap-northeast-1": {
-                "INFAPCRHELHVM": "ami-46985027"
+                "INFAPCRHELHVM": "ami-67ce8d00"
             },
             "ap-northeast-2": {
-                "INFAPCRHELHVM": "TBD"
+                "INFAPCRHELHVM": "ami-b69343d8"
             },
             "ap-south-1": {
                 "INFAPCRHELHVM": "TBD"
             },
             "ap-southeast-1": {
-                "INFAPCRHELHVM": "ami-6a7ea609"
+                "INFAPCRHELHVM": "ami-68de690b"
             },
             "ap-southeast-2": {
-                "INFAPCRHELHVM": "ami-a22016c1"
+                "INFAPCRHELHVM": "ami-7e7b7a1d"
+            },
+            "ca-central-1": {
+                "INFAPCRHELHVM": "ami-b4a31ed0"
             },
             "eu-central-1": {
-                "INFAPCRHELHVM": "ami-f819e997"
+                "INFAPCRHELHVM": "ami-ae3df5c1"
             },
             "eu-west-1": {
-                "INFAPCRHELHVM": "ami-9a9dede9"
+                "INFAPCRHELHVM": "ami-aaa682cc"
+            },
+            "eu-west-2": {
+                "INFAPCRHELHVM": "ami-63677207"
             },
             "sa-east-1": {
-                "INFAPCRHELHVM": "ami-1064f57c"
+                "INFAPCRHELHVM": "ami-ac3e59c0"
             },
             "us-east-1": {
-                "INFAPCRHELHVM": "ami-42cda155"
+                "INFAPCRHELHVM": "ami-1502c203"
             },
             "us-east-2": {
-                "INFAPCRHELHVM": "TBD"
+                "INFAPCRHELHVM": "ami-45e2c720"
             },
             "us-west-1": {
-                "INFAPCRHELHVM": "ami-8e83ceee"
+                "INFAPCRHELHVM": "ami-719cc011"
             },
             "us-west-2": {
-                "INFAPCRHELHVM": "ami-71f72111"
+                "INFAPCRHELHVM": "ami-3b3cb95b"
             }
         },
         "AWSInfoRegionMap": {
@@ -302,11 +308,19 @@
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             },
+            "ca-central-1": {
+                "Partition": "aws",
+                "QuickStartS3URL": "https://s3.amazonaws.com"
+            },
             "eu-central-1": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             },
             "eu-west-1": {
+                "Partition": "aws",
+                "QuickStartS3URL": "https://s3.amazonaws.com"
+            },
+            "eu-west-2": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             },
@@ -321,10 +335,6 @@
             "us-east-2": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
-            },
-            "us-gov-west-1": {
-                "Partition": "aws-us-gov",
-                "QuickStartS3URL": "https://s3-us-gov-west-1.amazonaws.com"
             },
             "us-west-1": {
                 "Partition": "aws",
