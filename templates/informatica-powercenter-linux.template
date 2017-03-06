@@ -198,7 +198,7 @@
             "MinLength": "8",
             "MaxLength": "20"
         },
-       "InformaticaNodeName": {
+        "InformaticaNodeName": {
             "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{3,20})$",
             "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 4-20",
             "Description": "Prefix for the Nodes in Informatica Domain. Node number will be the suffix for the nodes. Eg InfaNode1, InfaNode2",
@@ -234,7 +234,7 @@
             "MinLength": "8",
             "Type": "String"
         },
-         "KeyPairName": {
+        "KeyPairName": {
             "Description": "Name of an existing EC2 KeyPair to enable external access to the Informatica Domain",
             "Type": "AWS::EC2::KeyPair::KeyName",
             "MinLength": "1"
@@ -333,48 +333,88 @@
                     "AssertDescription": "All subnets must in the VPC"
                 }
             ]
+        },
+        "InformaticaPasswordConfirm": {
+            "Assertions": [
+                {
+                    "Assert": {
+                        "Fn::Equals": [
+                            {
+                                "Ref": "InformaticaDomainPassword"
+                            },
+                            {
+                                "Ref": "InformaticaDomainPasswordConfirm"
+                            }
+                        ]
+                    },
+                    "AssertDescription": "Informatica Domain Passwords do not match"
+                }
+            ]
+        },
+        "DatabasePasswordConfirm": {
+            "Assertions": [
+                {
+                    "Assert": {
+                        "Fn::Equals": [
+                            {
+                                "Ref": "DatabasePassword"
+                            },
+                            {
+                                "Ref": "DatabasePasswordConfirm"
+                            }
+                        ]
+                    },
+                    "AssertDescription": "Database Passwords do not match"
+                }
+            ]
         }
     },
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "INFORMATICAPCRHELHVM": "10.1_Linux_Server_2-b1c14762-8f3f-41df-ae2c-91adee508cf9-ami-8dd0589a.3"
+                "INFORMATICAPCRHELHVM": "Informatica-PowerCenter-10.1.1-RHEL7"
             },
             "ap-northeast-1": {
-                "INFORMATICAPCRHELHVM": "ami-46985027"
+                "INFORMATICAPCRHELHVM": "ami-67ce8d00"
             },
             "ap-northeast-2": {
-                "INFORMATICAPCRHELHVM": "TBD"
+                "INFORMATICAPCRHELHVM": "ami-b69343d8"
             },
             "ap-south-1": {
-                "INFORMATICAPCRHELHVM": "TBD"
+                "INFORMATICAPCRHELHVM": "ami-38bfce57"
             },
             "ap-southeast-1": {
-                "INFORMATICAPCRHELHVM": "ami-6a7ea609"
+                "INFORMATICAPCRHELHVM": "ami-68de690b"
             },
             "ap-southeast-2": {
-                "INFORMATICAPCRHELHVM": "ami-a22016c1"
+                "INFORMATICAPCRHELHVM": "ami-7e7b7a1d"
             },
             "eu-central-1": {
-                "INFORMATICAPCRHELHVM": "ami-f819e997"
+                "INFORMATICAPCRHELHVM": "ami-ae3df5c1"
             },
             "eu-west-1": {
-                "INFORMATICAPCRHELHVM": "ami-9a9dede9"
+                "INFORMATICAPCRHELHVM": "ami-aaa682cc"
+            },
+            "eu-west-2": {
+                "INFORMATICAPCRHELHVM": "ami-63677207"
             },
             "sa-east-1": {
-                "INFORMATICAPCRHELHVM": "ami-1064f57c"
+                "INFORMATICAPCRHELHVM": "ami-ac3e59c0"
             },
             "us-east-1": {
-                "INFORMATICAPCRHELHVM": "ami-42cda155"
+                "INFORMATICAPCRHELHVM": "ami-1502c203"
             },
             "us-east-2": {
-                "INFORMATICAPCRHELHVM": "TBD"
+                "INFORMATICAPCRHELHVM": "ami-45e2c720"
             },
             "us-west-1": {
-                "INFORMATICAPCRHELHVM": "ami-8e83ceee"
+                "INFORMATICAPCRHELHVM": "ami-719cc011"
             },
             "us-west-2": {
-                "INFORMATICAPCRHELHVM": "ami-71f72111"
+                "INFORMATICAPCRHELHVM": "ami-3b3cb95b"
+            },
+            "ca-central-1": {
+                "INFORMATICAPCRHELHVM": "ami-b4a31ed0"
             }
         },
         "AWSInfoRegionMap": {
@@ -406,6 +446,10 @@
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             },
+            "eu-west-2": {
+                "Partition": "aws",
+                "QuickStartS3URL": "https://s3.amazonaws.com"
+            },
             "sa-east-1": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
@@ -429,25 +473,190 @@
             "us-west-2": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
+            },
+            "ca-central-1": {
+                "Partition": "aws",
+                "QuickStartS3URL": "https://s3.amazonaws.com"
             }
         },
         "Config": {
             "Settings": {
-                "DatabaseName": "pc",
                 "DatabaseSize": "db.t2.large",
                 "IntegrationServiceName": "PowerCenterIntegrationService",
                 "RepositoryServiceName": "PowerCenterRepository",
-                "GridName": "InfaDefaultGrid"
+                "GridName": "InfaDefaultGrid",
+                "EFSDirectory": "/home/ec2-user/Informatica/10.1.1/infa_shared",
+                "LicenseFile": "/home/ec2-user/Informatica/10.1.1/License.key"
             },
-            "Oracle": {
+            "Oracle-Enterprise-Edition-12.1.0-BYOL": {
+                "Engine": "oracle-ee",
+                "DB": "Oracle",
+                "Version": "12.1",
+                "DatabaseSize": "db.t2.large",
+                "LicenseModel": "bring-your-own-license",
+                "AllocatedStorage": "100",
+                "Port": 1521
+            },
+            "Oracle-Enterprise-Edition-11.2.0-BYOL": {
+                "Engine": "oracle-ee",
+                "DB": "Oracle",
+                "Version": "11.2",
+                "DatabaseSize": "db.t2.large",
+                "LicenseModel": "bring-your-own-license",
+                "AllocatedStorage": "100",
+                "Port": 1521
+            },
+            "Oracle-Standard-Edition-12.1.0-BYOL": {
+                "Engine": "oracle-se",
+                "DB": "Oracle",
+                "Version": "12.1",
+                "DatabaseSize": "db.t2.large",
+                "LicenseModel": "bring-your-own-license",
+                "AllocatedStorage": "100",
+                "Port": 1521
+            },
+            "Oracle-Standard-Edition-11.2.0-BYOL": {
+                "Engine": "oracle-ee",
+                "DB": "Oracle",
+                "Version": "11.2",
+                "DatabaseSize": "db.t2.large",
+                "LicenseModel": "bring-your-own-license",
+                "AllocatedStorage": "100",
+                "Port": 1521
+            },
+            "Oracle-Standard-Edition-One-12.1.0-BYOL": {
                 "Engine": "oracle-se1",
+                "DB": "Oracle",
+                "Version": "12.1",
+                "DatabaseSize": "db.t2.large",
+                "LicenseModel": "bring-your-own-license",
+                "AllocatedStorage": "100",
+                "Port": 1521
+            },
+            "Oracle-Standard-Edition-One-11.2.0-BYOL": {
+                "Engine": "oracle-se1",
+                "DB": "Oracle",
+                "Version": "11.2",
+                "DatabaseSize": "db.t2.large",
+                "LicenseModel": "bring-your-own-license",
+                "AllocatedStorage": "100",
+                "Port": 1521
+            },
+            "Oracle-Standard-Edition-One-12.1.0-License-Included": {
+                "Engine": "oracle-se1",
+                "DB": "Oracle",
+                "Version": "12.1",
+                "DatabaseSize": "db.t2.large",
                 "LicenseModel": "license-included",
+                "AllocatedStorage": "100",
+                "Port": 1521
+            },
+            "Oracle-Standard-Edition-One-11.2.0-License-Included": {
+                "Engine": "oracle-se1",
+                "DB": "Oracle",
+                "Version": "11.2",
+                "DatabaseSize": "db.t2.large",
+                "LicenseModel": "license-included",
+                "AllocatedStorage": "100",
+                "Port": 1521
+            },
+            "Oracle-License-Included": {
+                "Engine": "oracle-se1",
+                "DB": "Oracle",
+                "LicenseModel": "license-included",
+                "AllocatedStorage": "50",
+                "Port": 1521
+            },
+            "Oracle-Bring-Your-Own-License": {
+                "Engine": "oracle-se1",
+                "DB": "Oracle",
+                "LicenseModel": "bring-your-own-license",
                 "AllocatedStorage": "50",
                 "Port": 1521
             }
         }
     },
     "Conditions": {
+        "EnableEIPCondition": {
+            "Fn::Equals": [
+                {
+                    "Ref": "EnableEIP"
+                },
+                "Yes"
+            ]
+        },
+        "AddLicenseCondition": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "LicenseKey"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "EFSRegionSupport": {
+            "Fn::Or": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "AWS::Region"
+                        },
+                        "us-east-1"
+                    ]
+                },
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "AWS::Region"
+                        },
+                        "us-east-2"
+                    ]
+                },
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "AWS::Region"
+                        },
+                        "us-west-2"
+                    ]
+                },
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "AWS::Region"
+                        },
+                        "eu-west-1"
+                    ]
+                }
+            ]
+        },
+        "EFSUserChoice": {
+            "Fn::Equals": [
+                {
+                    "Ref": "CreateEFS"
+                },
+                "Yes"
+            ]
+        },
+        "EFSCreateCondition": {
+            "Fn::And": [
+                {
+                    "Condition": "EFSUserChoice"
+                },
+                {
+                    "Condition": "EFSRegionSupport"
+                }
+            ]
+        },
+        "SingleNodeCondition": {
+            "Fn::Equals": [
+                "NumberOfPowerCenterInstances",
+                "1"
+            ]
+        },
         "2NodeCondition": {
             "Fn::Or": [
                 {
@@ -466,6 +675,18 @@
                 },
                 {
                     "Condition": "8NodeCondition"
+                },
+                {
+                    "Condition": "10NodeCondition"
+                },
+                {
+                    "Condition": "12NodeCondition"
+                },
+                {
+                    "Condition": "14NodeCondition"
+                },
+                {
+                    "Condition": "16NodeCondition"
                 }
             ]
         },
@@ -484,6 +705,18 @@
                 },
                 {
                     "Condition": "8NodeCondition"
+                },
+                {
+                    "Condition": "10NodeCondition"
+                },
+                {
+                    "Condition": "12NodeCondition"
+                },
+                {
+                    "Condition": "14NodeCondition"
+                },
+                {
+                    "Condition": "16NodeCondition"
                 }
             ]
         },
@@ -499,15 +732,185 @@
                 },
                 {
                     "Condition": "8NodeCondition"
+                },
+                {
+                    "Condition": "10NodeCondition"
+                },
+                {
+                    "Condition": "12NodeCondition"
+                },
+                {
+                    "Condition": "14NodeCondition"
+                },
+                {
+                    "Condition": "16NodeCondition"
                 }
             ]
         },
         "8NodeCondition": {
+            "Fn::Or": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "NumberOfPowerCenterInstances"
+                        },
+                        "8"
+                    ]
+                },
+                {
+                    "Condition": "10NodeCondition"
+                },
+                {
+                    "Condition": "12NodeCondition"
+                },
+                {
+                    "Condition": "14NodeCondition"
+                },
+                {
+                    "Condition": "16NodeCondition"
+                }
+            ]
+        },
+        "10NodeCondition": {
+            "Fn::Or": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "NumberOfPowerCenterInstances"
+                        },
+                        "10"
+                    ]
+                },
+                {
+                    "Condition": "12NodeCondition"
+                },
+                {
+                    "Condition": "14NodeCondition"
+                },
+                {
+                    "Condition": "16NodeCondition"
+                }
+            ]
+        },
+        "12NodeCondition": {
+            "Fn::Or": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "NumberOfPowerCenterInstances"
+                        },
+                        "12"
+                    ]
+                },
+                {
+                    "Condition": "14NodeCondition"
+                },
+                {
+                    "Condition": "16NodeCondition"
+                }
+            ]
+        },
+        "14NodeCondition": {
+            "Fn::Or": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "NumberOfPowerCenterInstances"
+                        },
+                        "14"
+                    ]
+                },
+                {
+                    "Condition": "16NodeCondition"
+                }
+            ]
+        },
+        "16NodeCondition": {
             "Fn::Equals": [
                 {
                     "Ref": "NumberOfPowerCenterInstances"
                 },
-                "8"
+                "16"
+            ]
+        },
+        "2NodeEIPCondition": {
+            "Fn::And": [
+                {
+                    "Condition": "EnableEIPCondition"
+                },
+                {
+                    "Condition": "2NodeCondition"
+                }
+            ]
+        },
+        "4NodeEIPCondition": {
+            "Fn::And": [
+                {
+                    "Condition": "EnableEIPCondition"
+                },
+                {
+                    "Condition": "4NodeCondition"
+                }
+            ]
+        },
+        "6NodeEIPCondition": {
+            "Fn::And": [
+                {
+                    "Condition": "EnableEIPCondition"
+                },
+                {
+                    "Condition": "6NodeCondition"
+                }
+            ]
+        },
+        "8NodeEIPCondition": {
+            "Fn::And": [
+                {
+                    "Condition": "EnableEIPCondition"
+                },
+                {
+                    "Condition": "8NodeCondition"
+                }
+            ]
+        },
+        "10NodeEIPCondition": {
+            "Fn::And": [
+                {
+                    "Condition": "EnableEIPCondition"
+                },
+                {
+                    "Condition": "10NodeCondition"
+                }
+            ]
+        },
+        "12NodeEIPCondition": {
+            "Fn::And": [
+                {
+                    "Condition": "EnableEIPCondition"
+                },
+                {
+                    "Condition": "12NodeCondition"
+                }
+            ]
+        },
+        "14NodeEIPCondition": {
+            "Fn::And": [
+                {
+                    "Condition": "EnableEIPCondition"
+                },
+                {
+                    "Condition": "14NodeCondition"
+                }
+            ]
+        },
+        "16NodeEIPCondition": {
+            "Fn::And": [
+                {
+                    "Condition": "EnableEIPCondition"
+                },
+                {
+                    "Condition": "16NodeCondition"
+                }
             ]
         }
     },
@@ -582,11 +985,7 @@
                     ]
                 },
                 "DBName": {
-                    "Fn::FindInMap": [
-                        "Config",
-                        "Settings",
-                        "DatabaseName"
-                    ]
+                    "Ref": "RDSDatabaseName"
                 },
                 "DBSubnetGroupName": {
                     "Ref": "DBSubnetGroup"
@@ -686,8 +1085,56 @@
                 }
             }
         },
+        "FileSystem": {
+            "Type": "AWS::EFS::FileSystem",
+            "Condition": "EFSCreateCondition",
+            "Properties": {
+                "PerformanceMode": "generalPurpose",
+                "FileSystemTags": [
+                    {
+                        "Key": "Name",
+                        "Value": "InformaticaEFS"
+                    }
+                ]
+            }
+        },
+        "MountTarget1": {
+            "Type": "AWS::EFS::MountTarget",
+            "Condition": "EFSCreateCondition",
+            "Properties": {
+                "FileSystemId": {
+                    "Ref": "FileSystem"
+                },
+                "SubnetId": {
+                    "Ref": "PublicSubnet1ID"
+                },
+                "SecurityGroups": [
+                    {
+                        "Ref": "InstanceSecurityGroup"
+                    }
+                ]
+            }
+        },
+        "MountTarget2": {
+            "Type": "AWS::EFS::MountTarget",
+            "Condition": "EFSCreateCondition",
+            "Properties": {
+                "FileSystemId": {
+                    "Ref": "FileSystem"
+                },
+                "SubnetId": {
+                    "Ref": "PublicSubnet2ID"
+                },
+                "SecurityGroups": [
+                    {
+                        "Ref": "InstanceSecurityGroup"
+                    }
+                ]
+            }
+        },
         "InfaMasterEIPAddress": {
             "Type": "AWS::EC2::EIP",
+            "Condition": "EnableEIPCondition",
             "Properties": {
                 "Domain": "vpc",
                 "InstanceId": {
@@ -700,7 +1147,16 @@
             "Type": "AWS::EC2::Instance",
             "Metadata": {
                 "AWS::CloudFormation::Init": {
-                    "config": {
+                    "configSets": {
+                        "setupdomain": [
+                            "config1"
+                        ],
+                        "setupwithlicense": [
+                            "config2",
+                            "config1"
+                        ]
+                    },
+                    "config1": {
                         "commands": {
                             "1-setup": {
                                 "command": {
@@ -726,6 +1182,83 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "2-mount_it": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "mount -t nfs4 -o nfsvers=4.1 $(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone).",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    }
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
+                                    ]
+                                }
+                            },
+                            "3-permissions": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "chmod -R 777 ",
+                                            {
+                                                "Fn::FindInMap": [
+                                                    "Config",
+                                                    "Settings",
+                                                    "EFSDirectory"
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                }
+                            },
+                            "4-owners": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "chown ec2-user.ec2-user ",
+                                            {
+                                                "Fn::FindInMap": [
+                                                    "Config",
+                                                    "Settings",
+                                                    "EFSDirectory"
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "config2": {
+                        "files": {
+                            "/home/ec2-user/Informatica/10.1.1/License.key": {
+                                "source": {
+                                    "Ref": "LicenseKey"
+                                },
+                                "mode": "000644",
+                                "owner": "ec2-user",
+                                "group": "ec2-user"
                             }
                         }
                     }
@@ -781,9 +1314,52 @@
                                 "export CREATE_DOMAIN=1 \n",
                                 "export JOIN_DOMAIN=0 \n",
                                 "export SERVES_AS_GATEWAY=0 \n",
+                                "export SINGLE_NODE=\"",
+                                {
+                                    "Fn::If": [
+                                        "SingleNodeCondition",
+                                        "1",
+                                        "0"
+                                    ]
+                                },
+                                "\"\n",
+                                "export DOMAIN_USER_NAME=\"",
+                                {
+                                    "Ref": "InformaticaDomainUsername"
+                                },
+                                "\"\n",
+                                "export ADD_LICENSE_CONDITION=\"",
+                                {
+                                    "Fn::If": [
+                                        "AddLicenseCondition",
+                                        "1",
+                                        "0"
+                                    ]
+                                },
+                                "\"\n",
+                                "export EFS_CREATE_CONDITION=\"",
+                                {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        "1",
+                                        "0"
+                                    ]
+                                },
+                                "\"\n",
+                                "export AWS_REGION=\"",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                "\"\n",
                                 "export DB_TYPE=\"",
                                 {
-                                    "Ref": "DatabaseType"
+                                    "Fn::FindInMap": [
+                                        "Config",
+                                        {
+                                            "Ref": "DatabaseType"
+                                        },
+                                        "DB"
+                                    ]
                                 },
                                 "\"\n",
                                 "export REPOSITORY_SERVICE_NAME=\"",
@@ -827,11 +1403,7 @@
                                 "\"\n",
                                 "export DB_SERVICENAME=\"",
                                 {
-                                    "Fn::FindInMap": [
-                                        "Config",
-                                        "Settings",
-                                        "DatabaseName"
-                                    ]
+                                    "Ref": "RDSDatabaseName"
                                 },
                                 "\"\n",
                                 "export DOMAIN_NAME=\"",
@@ -874,6 +1446,14 @@
                                 "/opt/aws/bin/cfn-init --stack ",
                                 {
                                     "Ref": "AWS::StackId"
+                                },
+                                " --configsets ",
+                                {
+                                    "Fn::If": [
+                                        "AddLicenseCondition",
+                                        "setupwithlicense",
+                                        "setupdomain"
+                                    ]
                                 },
                                 " --resource InfaMaster ",
                                 " --region ",
