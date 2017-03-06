@@ -23,7 +23,9 @@
                     "Parameters": [
                         "KeyPairName",
                         "PowerCenterInstanceType",
-                        "NumberOfPowerCenterInstances"
+                        "NumberOfPowerCenterInstances",
+                        "EnableEIP",
+                        "CreateEFS"
                     ]
                 },
                 {
@@ -32,8 +34,10 @@
                     },
                     "Parameters": [
                         "DatabaseType",
+                        "RDSDatabaseName",
                         "DatabaseUsername",
-                        "DatabasePassword"
+                        "DatabasePassword",
+                        "DatabasePasswordConfirm"
                     ]
                 },
                 {
@@ -45,7 +49,9 @@
                         "InformaticaNodeName",
                         "InformaticaDomainUsername",
                         "InformaticaDomainPassword",
-                        "EncryptionKeyPhrase"
+                        "InformaticaDomainPasswordConfirm",
+                        "EncryptionKeyPhrase",
+                        "LicenseKey"
                     ]
                 }
             ],
@@ -53,8 +59,14 @@
                 "DBSubnetIDs": {
                     "default": "Informatica Database Subnets"
                 },
+                "RDSDatabaseName": {
+                    "default": "Database Name"
+                },
                 "DatabasePassword": {
                     "default": "Database Password"
+                },
+                "DatabasePasswordConfirm": {
+                    "default": "Confirm Password"
                 },
                 "DatabaseType": {
                     "default": "Database Type"
@@ -77,6 +89,9 @@
                 "InformaticaDomainPassword": {
                     "default": "Informatica Administrator Password"
                 },
+                "InformaticaDomainPasswordConfirm": {
+                    "default": "Confirm Password"
+                },
                 "KeyPairName": {
                     "default": "Key Pair Name"
                 },
@@ -85,6 +100,12 @@
                 },
                 "PowerCenterInstanceType": {
                     "default": "Informatica Domain Instance Type"
+                },
+                "EnableEIP": {
+                    "default": "Enable Elastic IP Addressing"
+                },
+                "CreateEFS": {
+                    "default": "Create Elastic File System"
                 },
                 "PublicSubnet1ID": {
                     "default": "Public Subnet 1 ID"
@@ -97,6 +118,9 @@
                 },
                 "VPCID": {
                     "default": "VPC ID"
+                },
+                "LicenseKey": {
+                    "default": "Informatica License Key"
                 }
             }
         }
@@ -106,8 +130,28 @@
             "Description": "Select two subnet IDs each from a different region in the VPC chosen above (such as: us-west-1b, us-west-1c)",
             "Type": "List<AWS::EC2::Subnet::Id>"
         },
+        "RDSDatabaseName": {
+            "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{4,8})$",
+            "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 4-8",
+            "Description": "Database Name for RDS Instance. Default value is InfaDB",
+            "Type": "String",
+            "Default": "InfaDB",
+            "MinLength": "4",
+            "MaxLength": "8"
+        },
         "DatabasePassword": {
-            "Description": "Password for the Amazon RDS database account",
+            "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{3,20})$",
+            "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 8-18",
+            "Description": "Password for the Amazon RDS database account. Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 8-18",
+            "MaxLength": "18",
+            "MinLength": "8",
+            "NoEcho": "True",
+            "Type": "String"
+        },
+        "DatabasePasswordConfirm": {
+            "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{3,20})$",
+            "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 8-18",
+            "Description": "Password for the Amazon RDS database account.",
             "MaxLength": "18",
             "MinLength": "8",
             "NoEcho": "True",
@@ -115,17 +159,25 @@
         },
         "DatabaseType": {
             "AllowedValues": [
-                "Oracle"
+                "Oracle-Standard-Edition-One-12.1.0-License-Included",
+                "Oracle-Standard-Edition-One-11.2.0-License-Included",
+                "Oracle-Standard-Edition-One-12.1.0-BYOL",
+                "Oracle-Standard-Edition-One-11.2.0-BYOL",
+                "Oracle-Enterprise-Edition-12.1.0-BYOL",
+                "Oracle-Enterprise-Edition-11.2.0-BYOL",
+                "Oracle-Standard-Edition-12.1.0-BYOL",
+                "Oracle-Standard-Edition-11.2.0-BYOL"
             ],
-            "ConstraintDescription": "Oracle",
-            "Default": "Oracle",
+            "Default": "Oracle-Standard-Edition-One-12.1.0-License-Included",
             "Description": "The type of database to use in Amazon RDS. Currently, you can only use Oracle",
             "Type": "String"
         },
         "DatabaseUsername": {
+            "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{3,20})$",
+            "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 4-20",
             "Description": "Username for the Amazon RDS database account",
             "MaxLength": "30",
-            "MinLength": "2",
+            "MinLength": "4",
             "Type": "String"
         },
         "EncryptionKeyPhrase": {
@@ -138,37 +190,54 @@
             "Type": "String"
         },
         "InformaticaDomainName": {
+            "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{7,20})$",
+            "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 4-20",
             "Description": "Name for the Informatica Domain.",
             "Type": "String",
             "Default": "InfaDomain",
+            "MinLength": "8",
+            "MaxLength": "20"
+        },
+       "InformaticaNodeName": {
+            "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{3,20})$",
+            "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 4-20",
+            "Description": "Prefix for the Nodes in Informatica Domain. Node number will be the suffix for the nodes. Eg InfaNode1, InfaNode2",
+            "Type": "String",
+            "Default": "Infa",
             "MinLength": "4",
             "MaxLength": "20"
         },
-        "InformaticaNodeName": {
-            "Description": "Prefix for the Nodes in Informatica Domain. Node number will be the suffix for the nodes. Eg PowerCenterNode1, PowerCenterNode2",
-            "Type": "String",
-            "Default": "PowerCenter",
-            "MinLength": "2",
-            "MaxLength": "20"
-        },
         "InformaticaDomainUsername": {
+            "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{7,20})$",
+            "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 4-20",
             "Description": "Username for the Informatica Domain.",
-            "AllowedValues": [
-                "Administrator"
-            ],
             "Default": "Administrator",
-            "MaxLength": "32",
+            "MaxLength": "20",
             "MinLength": "8",
             "Type": "String"
         },
         "InformaticaDomainPassword": {
-            "Description": "Password for the Informatica Domain. Administrator is the default Username for Informatica Domain",
+            "AllowedPattern": "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[^\\s\\w])(?!.*[\"$&]).{7,32}$",
+            "ConstraintDescription": "Password must be at least 8 characters in length. Should contain at least one special character, number, upper-case and lower-case character. Double quote(\"),ampersand(&) and dollar($) is not allowed",
+            "Description": "Password for the Informatica Domain. Password must be at least 8 characters in length. Should contain at least one special character, number, upper-case and lower-case character. Double quote(\"),ampersand(&) and dollar($) is not allowed",
             "NoEcho": "True",
+            "MaxLength": "32",
+            "MinLength": "8",
             "Type": "String"
         },
-        "KeyPairName": {
+        "InformaticaDomainPasswordConfirm": {
+            "AllowedPattern": "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[^\\s\\w])(?!.*[\"$&]).{7,32}$",
+            "ConstraintDescription": "Password must be at least 8 characters in length. Should contain at least one special character, number, upper-case and lower-case character. Double quote(\"),ampersand(&) and dollar($) is not allowed",
+            "Description": "Password for the Informatica Domain.",
+            "NoEcho": "True",
+            "MaxLength": "32",
+            "MinLength": "8",
+            "Type": "String"
+        },
+         "KeyPairName": {
             "Description": "Name of an existing EC2 KeyPair to enable external access to the Informatica Domain",
-            "Type": "AWS::EC2::KeyPair::KeyName"
+            "Type": "AWS::EC2::KeyPair::KeyName",
+            "MinLength": "1"
         },
         "NumberOfPowerCenterInstances": {
             "Description": "Number of PowerCenter Nodes. Each node runs on one EC2 Instance",
@@ -178,7 +247,11 @@
                 "2",
                 "4",
                 "6",
-                "8"
+                "8",
+                "10",
+                "12",
+                "14",
+                "16"
             ],
             "Default": "4"
         },
@@ -215,6 +288,29 @@
         "VPCID": {
             "Description": "Which VPC should this be deployed to?",
             "Type": "AWS::EC2::VPC::Id"
+        },
+        "LicenseKey": {
+            "Description": "*Optional Argument*. Provide a PUBLIC S3 link for the License Key file. Leave blank to go ahead without the Licence Key",
+            "Type": "String",
+            "Default": ""
+        },
+        "CreateEFS": {
+            "Description": "Create shared storage for High Availability. Default value is Yes. Shared storage is created only if it is available in your region",
+            "Type": "String",
+            "AllowedValues": [
+                "Yes",
+                "No"
+            ],
+            "Default": "Yes"
+        },
+        "EnableEIP": {
+            "Description": "Assign Elastic IPs to Instances. Default value is Yes",
+            "Type": "String",
+            "AllowedValues": [
+                "Yes",
+                "No"
+            ],
+            "Default": "Yes"
         }
     },
     "Rules": {
