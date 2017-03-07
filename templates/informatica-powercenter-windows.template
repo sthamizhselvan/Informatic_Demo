@@ -359,7 +359,7 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "INFORMATICAPCWINHVM": "Informatica-PowerCenter-10.1.1-WindowsServer2012R2"
+                "INFORMATICAPCWINHVM": "Informatica-PowerCenter-10.1.1-WindowsServer2012R2-73eb10f0-ef93-494a-bff4-de78cbe56fcb-ami-12719a04.4"
             },
             "us-east-1": {
                 "INFORMATICAPCWINHVM": "ami-2203c334"

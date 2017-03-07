@@ -51,6 +51,7 @@
                         "InformaticaDomainName",
                         "InformaticaNodeName",
                         "InformaticaDomainUsername",
+                        "InformaticaDomainPassword",
                         "InformaticaDomainPasswordConfirm",
                         "EncryptionKeyPhrase",
                         "LicenseKey"

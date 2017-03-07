@@ -372,7 +372,7 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "INFORMATICAPCRHELHVM": "Informatica-PowerCenter-10.1.1-RHEL7"
+                "INFORMATICAPCRHELHVM": "Informatica-PowerCenter-10.1.1-RHEL7-b1c14762-8f3f-41df-ae2c-91adee508cf9-ami-8c5fab9a.4"
             },
             "ap-northeast-1": {
                 "INFORMATICAPCRHELHVM": "ami-67ce8d00"
