@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "AWS Cloud Formation Template for deploying Informatica PowerCenter Version 10.1.0 on EC2 RHEL7.0 instances. This template uses an existing VPC and two Private and Public subnets. It deploys an Instance of Amazon RDS with Oracle Database on the Private Subnet. The Informatica PowerCenter Instanes are deployed in the Public Subnet. The template deploys resources over two Availability Zones.",
+    "Description": "AWS Cloud Formation Template for deploying Informatica PowerCenter Version 10.1 on EC2 RHEL7.0 instances. This template uses an existing VPC and two Private and Public subnets. It deploys an Instance of Amazon RDS with Oracle Database on the Private Subnet. The Informatica PowerCenter Instances are deployed in the Public Subnet. The template deploys resources over two Availability Zones. QS(5015)",
     "Metadata": {
         "AWS::CloudFormation::Interface": {
             "ParameterGroups": [
@@ -438,6 +438,10 @@
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             },
+            "ca-central-1": {
+                "Partition": "aws",
+                "QuickStartS3URL": "https://s3.amazonaws.com"
+            },
             "eu-central-1": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
@@ -461,10 +465,6 @@
             "us-east-2": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
-            },
-            "us-gov-west-1": {
-                "Partition": "aws-us-gov",
-                "QuickStartS3URL": "https://s3-us-gov-west-1.amazonaws.com"
             },
             "us-west-1": {
                 "Partition": "aws",
@@ -560,7 +560,6 @@
                 "AllocatedStorage": "100",
                 "Port": 1521
             }
-            
         }
     },
     "Conditions": {
@@ -3783,7 +3782,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -4094,7 +4093,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -4405,7 +4404,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -4716,7 +4715,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -5027,7 +5026,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -5338,7 +5337,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -5649,7 +5648,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -5960,7 +5959,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {

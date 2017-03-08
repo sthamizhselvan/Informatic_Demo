@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "AWS Cloud Formation Template for deployment of Informatica Powercenter Version 10.1.0 on a VPC infrastructure. Informatica PowerCenter is deployed on RHEL 7.0 or Windows Server 2012 R2 depending on user input. Amazon RDS instance in a private subnet is used as the repository for Informatica Domain Metadata. **WARNING** This template creates Amazon EC2 instance and related resources. You will be billed for the AWS resources used if you create a stack from this template.",
+    "Description": "AWS Cloud Formation Template for deployment of Informatica Powercenter Version 10.1 on a VPC infrastructure. Informatica PowerCenter is deployed on RHEL 7.0 or Windows Server 2012 R2 depending on user input. Amazon RDS instance in a private subnet is used as the repository for Informatica Domain Metadata. **WARNING** This template creates Amazon EC2 instance and related resources. You will be billed for the AWS resources used if you create a stack from this template.",
     "Metadata": {
         "AWS::CloudFormation::Interface": {
             "ParameterGroups": [
@@ -411,11 +411,19 @@
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             },
+            "ca-central-1": {
+                "Partition": "aws",
+                "QuickStartS3URL": "https://s3.amazonaws.com"
+            },
             "eu-central-1": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             },
             "eu-west-1": {
+                "Partition": "aws",
+                "QuickStartS3URL": "https://s3.amazonaws.com"
+            },
+            "eu-west-2": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             },
@@ -430,10 +438,6 @@
             "us-east-2": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
-            },
-            "us-gov-west-1": {
-                "Partition": "aws-us-gov",
-                "QuickStartS3URL": "https://s3-us-gov-west-1.amazonaws.com"
             },
             "us-west-1": {
                 "Partition": "aws",
