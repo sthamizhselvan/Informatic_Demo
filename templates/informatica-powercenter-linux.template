@@ -3782,7 +3782,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFAPCRHELHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -4093,7 +4093,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFAPCRHELHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -4404,7 +4404,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFAPCRHELHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -4715,7 +4715,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFAPCRHELHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -5026,7 +5026,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFAPCRHELHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -5337,7 +5337,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFAPCRHELHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -5648,7 +5648,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFAPCRHELHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -5959,7 +5959,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFAPCRHELHVM"
+                        "INFORMATICAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
