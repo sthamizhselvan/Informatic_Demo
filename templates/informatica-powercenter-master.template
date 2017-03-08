@@ -371,7 +371,7 @@
             "Default": ""
         },
         "CreateEFS": {
-            "Description": "Create shared storage for High Availability. Default value is Yes. Shared storage is created only if it is available in your region",
+            "Description": "*Linux Only*. Create shared storage for High Availability. Default value is Yes. Shared storage is created only if it is available in your region",
             "Type": "String",
             "AllowedValues": [
                 "Yes",
@@ -632,12 +632,19 @@
                         "Ref": "LicenseKey"
                     },
                     "CreateEFS": {
-                        "Ref": "CreateEFS"
+                        "Fn::If": [
+                            "InfaOnWindows",
+                            {
+                                "Ref": "AWS::NoValue"
+                            },
+                            {
+                                "Ref": "CreateEFS"
+                            }
+                        ]
                     },
                     "EnableEIP": {
                         "Ref": "EnableEIP"
                     }
-
                 }
             }
         }
