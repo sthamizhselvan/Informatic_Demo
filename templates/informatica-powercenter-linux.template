@@ -372,49 +372,47 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "INFORMATICAPCRHELHVM": "Informatica-PowerCenter-10.1.1-RHEL7-b1c14762-8f3f-41df-ae2c-91adee508cf9-ami-8c5fab9a.4"
+                "INFAPCRHELHVM": "Informatica-PowerCenter-10.1.1-RHEL7-b1c14762-8f3f-41df-ae2c-91adee508cf9-ami-8c5fab9a.4"
             },
             "ap-northeast-1": {
-                "INFORMATICAPCRHELHVM": "ami-67ce8d00"
+                "INFAPCRHELHVM": "ami-67ce8d00"
             },
             "ap-northeast-2": {
-                "INFORMATICAPCRHELHVM": "ami-b69343d8"
+                "INFAPCRHELHVM": "ami-b69343d8"
             },
-            "ap-south-1": {
-                "INFORMATICAPCRHELHVM": "ami-38bfce57"
-            },
+            "ap-south-1": {},
             "ap-southeast-1": {
-                "INFORMATICAPCRHELHVM": "ami-68de690b"
+                "INFAPCRHELHVM": "ami-68de690b"
             },
             "ap-southeast-2": {
-                "INFORMATICAPCRHELHVM": "ami-7e7b7a1d"
-            },
-            "eu-central-1": {
-                "INFORMATICAPCRHELHVM": "ami-ae3df5c1"
-            },
-            "eu-west-1": {
-                "INFORMATICAPCRHELHVM": "ami-aaa682cc"
-            },
-            "eu-west-2": {
-                "INFORMATICAPCRHELHVM": "ami-63677207"
-            },
-            "sa-east-1": {
-                "INFORMATICAPCRHELHVM": "ami-ac3e59c0"
-            },
-            "us-east-1": {
-                "INFORMATICAPCRHELHVM": "ami-1502c203"
-            },
-            "us-east-2": {
-                "INFORMATICAPCRHELHVM": "ami-45e2c720"
-            },
-            "us-west-1": {
-                "INFORMATICAPCRHELHVM": "ami-719cc011"
-            },
-            "us-west-2": {
-                "INFORMATICAPCRHELHVM": "ami-3b3cb95b"
+                "INFAPCRHELHVM": "ami-7e7b7a1d"
             },
             "ca-central-1": {
-                "INFORMATICAPCRHELHVM": "ami-b4a31ed0"
+                "INFAPCRHELHVM": "ami-b4a31ed0"
+            },
+            "eu-central-1": {
+                "INFAPCRHELHVM": "ami-ae3df5c1"
+            },
+            "eu-west-1": {
+                "INFAPCRHELHVM": "ami-aaa682cc"
+            },
+            "eu-west-2": {
+                "INFAPCRHELHVM": "ami-63677207"
+            },
+            "sa-east-1": {
+                "INFAPCRHELHVM": "ami-ac3e59c0"
+            },
+            "us-east-1": {
+                "INFAPCRHELHVM": "ami-1502c203"
+            },
+            "us-east-2": {
+                "INFAPCRHELHVM": "ami-45e2c720"
+            },
+            "us-west-1": {
+                "INFAPCRHELHVM": "ami-719cc011"
+            },
+            "us-west-2": {
+                "INFAPCRHELHVM": "ami-3b3cb95b"
             }
         },
         "AWSInfoRegionMap": {
@@ -471,10 +469,6 @@
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             },
             "us-west-2": {
-                "Partition": "aws",
-                "QuickStartS3URL": "https://s3.amazonaws.com"
-            },
-            "ca-central-1": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             }
@@ -1273,7 +1267,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1605,7 +1599,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -1916,7 +1910,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -2227,7 +2221,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -2538,7 +2532,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -2849,7 +2843,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -3160,7 +3154,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
@@ -3471,7 +3465,7 @@
                         {
                             "Ref": "AWS::Region"
                         },
-                        "INFORMATICAPCRHELHVM"
+                        "INFAPCRHELHVM"
                     ]
                 },
                 "SubnetId": {
