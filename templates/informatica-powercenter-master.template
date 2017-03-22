@@ -187,16 +187,13 @@
         },
         "DatabaseType": {
             "AllowedValues": [
-                "Oracle-Standard-Edition-One-12.1.0-License-Included",
                 "Oracle-Standard-Edition-One-11.2.0-License-Included",
-                "Oracle-Standard-Edition-One-12.1.0-BYOL",
                 "Oracle-Standard-Edition-One-11.2.0-BYOL",
                 "Oracle-Enterprise-Edition-12.1.0-BYOL",
                 "Oracle-Enterprise-Edition-11.2.0-BYOL",
-                "Oracle-Standard-Edition-12.1.0-BYOL",
                 "Oracle-Standard-Edition-11.2.0-BYOL"
             ],
-            "Default": "Oracle-Standard-Edition-One-12.1.0-License-Included",
+            "Default": "Oracle-Standard-Edition-One-11.2.0-License-Included",
             "Description": "The type of database to use in Amazon RDS. Currently, you can only use Oracle",
             "Type": "String"
         },
