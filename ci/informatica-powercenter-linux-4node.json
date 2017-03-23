@@ -4,16 +4,32 @@
         "ParameterValue": "$[alfred_genaz_2]"
     },
     {
+        "ParameterKey": "CreateEFS",
+        "ParameterValue": "Yes"
+    },
+    {
+        "ParameterKey": "DatabaseName",
+        "ParameterValue": "InfaDB"
+    },
+    {
         "ParameterKey": "DatabasePassword",
         "ParameterValue": "$[alfred_genpass_18]"
     },
     {
+        "ParameterKey": "DatabasePasswordConfirm",
+        "ParameterValue": "$[alfred_copyparamvalue_DatabasePassword]"
+    },
+    {
         "ParameterKey": "DatabaseType",
-        "ParameterValue": "Oracle"
+        "ParameterValue": "Oracle-Enterprise-Edition-11.2.0-BYOL"
     },
     {
         "ParameterKey": "DatabaseUsername",
         "ParameterValue": "dbadministrator"
+    },
+    {
+        "ParameterKey": "EnableEIP",
+        "ParameterValue": "Yes"
     },
     {
         "ParameterKey": "EncryptionKeyPhrase",
@@ -28,6 +44,10 @@
         "ParameterValue": "$[alfred_genpass_18]"
     },
     {
+        "ParameterKey": "InformaticaDomainPasswordConfirm",
+        "ParameterValue": "$[alfred_copyparamvalue_InformaticaDomainPassword]"
+    },
+    {
         "ParameterKey": "InformaticaDomainUsername",
         "ParameterValue": "Administrator"
     },
@@ -37,7 +57,11 @@
     },
     {
         "ParameterKey": "KeyPairName",
-        "ParameterValue": "cikey"
+        "ParameterValue": "$[alfred_getkeypair]"
+    },
+    {
+        "ParameterKey": "LicenseKey",
+        "ParameterValue": ""
     },
     {
         "ParameterKey": "NumberOfPowerCenterInstances",

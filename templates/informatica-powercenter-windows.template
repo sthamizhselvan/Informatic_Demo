@@ -33,7 +33,7 @@
                     },
                     "Parameters": [
                         "DatabaseType",
-                        "RDSDatabaseName",
+                        "DatabaseName",
                         "DatabaseUsername",
                         "DatabasePassword",
                         "DatabasePasswordConfirm"
@@ -58,7 +58,7 @@
                 "DBSubnetIDs": {
                     "default": "Informatica Database Subnets"
                 },
-                "RDSDatabaseName": {
+                "DatabaseName": {
                     "default": "Database Name"
                 },
                 "DatabasePassword": {
@@ -126,7 +126,7 @@
             "Description": "Select two subnet IDs each from a different region in the VPC chosen above (such as: us-west-1b, us-west-1c)",
             "Type": "List<AWS::EC2::Subnet::Id>"
         },
-        "RDSDatabaseName": {
+        "DatabaseName": {
             "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{4,8})$",
             "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 4-8",
             "Description": "Database Name for RDS Instance. Default value is InfaDB",
@@ -173,6 +173,15 @@
             "MinLength": "4",
             "Type": "String"
         },
+        "EnableEIP": {
+            "Description": "Assign Elastic IPs to Instances. Default value is Yes",
+            "Type": "String",
+            "AllowedValues": [
+                "Yes",
+                "No"
+            ],
+            "Default": "Yes"
+        },
         "EncryptionKeyPhrase": {
             "AllowedPattern": "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$",
             "ConstraintDescription": "It should be 8 to 20 characters long, at least one uppercase letter at least one lowercase letter-at least one number Does not contain spaces",
@@ -190,24 +199,6 @@
             "Default": "InfaDomain",
             "MinLength": "8",
             "MaxLength": "20"
-        },
-        "InformaticaNodeName": {
-            "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{3,20})$",
-            "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 4-20",
-            "Description": "Prefix for the Nodes in Informatica Domain. Node number will be the suffix for the nodes. Eg InfaNode1, InfaNode2",
-            "Type": "String",
-            "Default": "Infa",
-            "MinLength": "4",
-            "MaxLength": "20"
-        },
-        "InformaticaDomainUsername": {
-            "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{7,20})$",
-            "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 4-20",
-            "Description": "Username for the Informatica Domain.",
-            "Default": "Administrator",
-            "MaxLength": "32",
-            "MinLength": "8",
-            "Type": "String"
         },
         "InformaticaDomainPassword": {
             "AllowedPattern": "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[^\\s\\w])(?!.*[\"$&]).{7,32}$",
@@ -227,10 +218,33 @@
             "MinLength": "8",
             "Type": "String"
         },
+        "InformaticaDomainUsername": {
+            "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{7,20})$",
+            "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 4-20",
+            "Description": "Username for the Informatica Domain.",
+            "Default": "Administrator",
+            "MaxLength": "32",
+            "MinLength": "8",
+            "Type": "String"
+        },
+        "InformaticaNodeName": {
+            "AllowedPattern": "^([a-zA-Z][a-z0-9A-Z_]{3,20})$",
+            "ConstraintDescription": "Only alphanumeric characters and underscore are allowed. Should begin with an alphabet. The value must be 4-20",
+            "Description": "Prefix for the Nodes in Informatica Domain. Node number will be the suffix for the nodes. Eg InfaNode1, InfaNode2",
+            "Type": "String",
+            "Default": "Infa",
+            "MinLength": "4",
+            "MaxLength": "20"
+        },
         "KeyPairName": {
             "Description": "Name of an existing EC2 KeyPair to enable external access to the Informatica Domain",
             "Type": "AWS::EC2::KeyPair::KeyName",
             "MinLength": "1"
+        },
+        "LicenseKey": {
+            "Description": "*Optional Argument*. Provide a PUBLIC S3 link for the License Key file. Leave blank to go ahead without the Licence Key",
+            "Type": "String",
+            "Default": ""
         },
         "NumberOfPowerCenterInstances": {
             "Description": "Number of PowerCenter Nodes. Each node runs on one EC2 Instance",
@@ -281,20 +295,6 @@
         "VPCID": {
             "Description": "Which VPC should this be deployed to?",
             "Type": "AWS::EC2::VPC::Id"
-        },
-        "LicenseKey": {
-            "Description": "*Optional Argument*. Provide a PUBLIC S3 link for the License Key file. Leave blank to go ahead without the Licence Key",
-            "Type": "String",
-            "Default": ""
-        },
-        "EnableEIP": {
-            "Description": "Assign Elastic IPs to Instances. Default value is Yes",
-            "Type": "String",
-            "AllowedValues": [
-                "Yes",
-                "No"
-            ],
-            "Default": "Yes"
         }
     },
     "Rules": {
@@ -868,7 +868,7 @@
                     ]
                 },
                 "DBName": {
-                    "Ref": "RDSDatabaseName"
+                    "Ref": "DatabaseName"
                 },
                 "DBSubnetGroupName": {
                     "Ref": "DBSubnetGroup"
@@ -1162,7 +1162,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -1382,7 +1382,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -1615,7 +1615,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -1848,7 +1848,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -2081,7 +2081,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -2314,7 +2314,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -2547,7 +2547,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -2780,7 +2780,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -3013,7 +3013,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -3246,7 +3246,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -3479,7 +3479,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -3712,7 +3712,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -3945,7 +3945,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -4178,7 +4178,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -4411,7 +4411,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
@@ -4644,7 +4644,7 @@
                                 "\"\n",
                                 "$env:DB_SERVICENAME=\"",
                                 {
-                                    "Ref": "RDSDatabaseName"
+                                    "Ref": "DatabaseName"
                                 },
                                 "\"\n",
                                 "$env:DOMAIN_NAME=\"",
