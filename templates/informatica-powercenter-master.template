@@ -386,6 +386,42 @@
             "Type": "String"
         }
     },
+    "Rules": {
+        "InformaticaPasswordConfirm": {
+            "Assertions": [
+                {
+                    "Assert": {
+                        "Fn::Equals": [
+                            {
+                                "Ref": "InformaticaDomainPassword"
+                            },
+                            {
+                                "Ref": "InformaticaDomainPasswordConfirm"
+                            }
+                        ]
+                    },
+                    "AssertDescription": "Informatica Domain Passwords do not match"
+                }
+            ]
+        },
+        "DatabasePasswordConfirm": {
+            "Assertions": [
+                {
+                    "Assert": {
+                        "Fn::Equals": [
+                            {
+                                "Ref": "DatabasePassword"
+                            },
+                            {
+                                "Ref": "DatabasePasswordConfirm"
+                            }
+                        ]
+                    },
+                    "AssertDescription": "Database Passwords do not match"
+                }
+            ]
+        }
+    },
     "Mappings": {
         "AWSInfoRegionMap": {
             "ap-northeast-1": {
