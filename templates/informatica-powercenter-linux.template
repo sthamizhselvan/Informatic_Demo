@@ -386,6 +386,9 @@
             "ap-southeast-2": {
                 "INFAPCRHELHVM": "ami-7e7b7a1d"
             },
+            "ca-central-1": {
+                "INFAPCRHELHVM": "ami-b4a31ed0"
+            },
             "eu-central-1": {
                 "INFAPCRHELHVM": "ami-ae3df5c1"
             },
@@ -409,9 +412,6 @@
             },
             "us-west-2": {
                 "INFAPCRHELHVM": "ami-3b3cb95b"
-            },
-            "ca-central-1": {
-                "INFAPCRHELHVM": "ami-b4a31ed0"
             }
         },
         "AWSInfoRegionMap": {
