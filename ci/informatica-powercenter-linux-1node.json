@@ -17,7 +17,7 @@
     },
     {
         "ParameterKey": "DatabasePasswordConfirm",
-        "ParameterValue": "$[alfred_copyparamvalue_DatabasePassword]"
+        "ParameterValue": "$[alfred_getparamvalue_DatabasePassword]"
     },
     {
         "ParameterKey": "DatabaseType",
@@ -45,7 +45,7 @@
     },
     {
         "ParameterKey": "InformaticaDomainPasswordConfirm",
-        "ParameterValue": "$[alfred_copyparamvalue_InformaticaDomainPassword]"
+        "ParameterValue": "$[alfred_getparamvalue_InformaticaDomainPassword]"
     },
     {
         "ParameterKey": "InformaticaDomainUsername",
