@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "AWS Cloud Formation Template for deployment of Informatica Powercenter Version 10.1 on a VPC infrastructure. Informatica PowerCenter is deployed on RHEL 7.0 or Windows Server 2012 R2 depending on user input. Amazon RDS instance in a private subnet is used as the repository for Informatica Domain Metadata. **WARNING** This template creates Amazon EC2 instance and related resources. You will be billed for the AWS resources used if you create a stack from this template.",
+    "Description": "AWS Cloud Formation Template for deployment of Informatica Powercenter Version 10.1.1 on a VPC infrastructure. Informatica PowerCenter is deployed on RHEL 7.3 or Windows Server 2012 R2 depending on user input. Amazon RDS instance in a private subnet is used as the repository for Informatica Domain Metadata. **WARNING** This template creates Amazon EC2 instance and related resources. You will be billed for the AWS resources used if you create a stack from this template.",
     "Metadata": {
         "AWS::CloudFormation::Interface": {
             "ParameterGroups": [
@@ -187,16 +187,13 @@
         },
         "DatabaseType": {
             "AllowedValues": [
-                "Oracle-Standard-Edition-One-12.1.0-License-Included",
                 "Oracle-Standard-Edition-One-11.2.0-License-Included",
-                "Oracle-Standard-Edition-One-12.1.0-BYOL",
                 "Oracle-Standard-Edition-One-11.2.0-BYOL",
                 "Oracle-Enterprise-Edition-12.1.0-BYOL",
                 "Oracle-Enterprise-Edition-11.2.0-BYOL",
-                "Oracle-Standard-Edition-12.1.0-BYOL",
                 "Oracle-Standard-Edition-11.2.0-BYOL"
             ],
-            "Default": "Oracle-Standard-Edition-One-12.1.0-License-Included",
+            "Default": "Oracle-Standard-Edition-One-11.2.0-License-Included",
             "Description": "The type of database to use in Amazon RDS. Currently, you can only use Oracle",
             "Type": "String"
         },
@@ -366,12 +363,12 @@
             "Type": "String"
         },
         "LicenseKey": {
-            "Description": "*Optional Argument*. Provide a PUBLIC S3 link for the License Key file. Leave blank to go ahead without the Licence Key",
+            "Description": "*OPTIONAL*. Provide a PUBLIC S3 link for the License Key file. Leave blank to go ahead without the Licence Key",
             "Type": "String",
             "Default": ""
         },
         "CreateEFS": {
-            "Description": "Create shared storage for High Availability. Default value is Yes. Shared storage is created only if it is available in your region",
+            "Description": "*LINUX ONLY*. Create shared storage for High Availability. Default value is Yes. Shared storage is created only if it is available in your region",
             "Type": "String",
             "AllowedValues": [
                 "Yes",
@@ -574,6 +571,9 @@
                     "DatabasePassword": {
                         "Ref": "DatabasePassword"
                     },
+                    "DatabasePasswordConfirm": {
+                        "Ref": "DatabasePasswordConfirm"
+                    },
                     "DatabaseType": {
                         "Ref": "DatabaseType"
                     },
@@ -597,6 +597,9 @@
                     },
                     "InformaticaDomainPassword": {
                         "Ref": "InformaticaDomainPassword"
+                    },
+                    "InformaticaDomainPasswordConfirm": {
+                        "Ref": "InformaticaDomainPasswordConfirm"
                     },
                     "PowerCenterInstanceType": {
                         "Ref": "PowerCenterInstanceType"
@@ -632,12 +635,19 @@
                         "Ref": "LicenseKey"
                     },
                     "CreateEFS": {
-                        "Ref": "CreateEFS"
+                        "Fn::If": [
+                            "InfaOnWindows",
+                            {
+                                "Ref": "AWS::NoValue"
+                            },
+                            {
+                                "Ref": "CreateEFS"
+                            }
+                        ]
                     },
                     "EnableEIP": {
                         "Ref": "EnableEIP"
                     }
-
                 }
             }
         }

@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "AWS Cloud Formation Template for deploying Informatica PowerCenter Version 10.1 on EC2 Windows 2012 R2 instances. This template uses an existing VPC and two Private and Public subnets. It deploys an Instance of Amazon RDS with Oracle Database on the Private Subnet. The Informatica PowerCenter Instances are deployed in the Public Subnet. The template deploys resources over two Availability Zones. QS(0041)",
+    "Description": "AWS Cloud Formation Template for deploying Informatica PowerCenter Version 10.1.1 on EC2 Windows 2012 R2 instances. This template uses an existing VPC and two Private and Public subnets. It deploys an Instance of Amazon RDS with Oracle Database on the Private Subnet. The Informatica PowerCenter Instances are deployed in the Public Subnet. The template deploys resources over two Availability Zones.",
     "Metadata": {
         "AWS::CloudFormation::Interface": {
             "ParameterGroups": [
@@ -155,16 +155,13 @@
         },
         "DatabaseType": {
             "AllowedValues": [
-                "Oracle-Standard-Edition-One-12.1.0-License-Included",
                 "Oracle-Standard-Edition-One-11.2.0-License-Included",
-                "Oracle-Standard-Edition-One-12.1.0-BYOL",
                 "Oracle-Standard-Edition-One-11.2.0-BYOL",
                 "Oracle-Enterprise-Edition-12.1.0-BYOL",
                 "Oracle-Enterprise-Edition-11.2.0-BYOL",
-                "Oracle-Standard-Edition-12.1.0-BYOL",
                 "Oracle-Standard-Edition-11.2.0-BYOL"
             ],
-            "Default": "Oracle-Standard-Edition-One-12.1.0-License-Included",
+            "Default": "Oracle-Standard-Edition-One-11.2.0-License-Included",
             "Description": "The type of database to use in Amazon RDS. Currently, you can only use Oracle",
             "Type": "String"
         },
@@ -367,7 +364,9 @@
             "ap-northeast-2": {
                 "INFAPCWINHVM": "ami-1a9b4b74"
             },
-            "ap-south-1": {},
+            "ap-south-1": {
+                "INFAPCWINHVM": "TBD"
+            },
             "ap-southeast-1": {
                 "INFAPCWINHVM": "ami-85df68e6"
             },
@@ -485,28 +484,10 @@
                 "AllocatedStorage": "100",
                 "Port": 1521
             },
-            "Oracle-Standard-Edition-12.1.0-BYOL": {
-                "Engine": "oracle-se",
-                "DB": "Oracle",
-                "Version": "12.1",
-                "DatabaseSize": "db.t2.large",
-                "LicenseModel": "bring-your-own-license",
-                "AllocatedStorage": "100",
-                "Port": 1521
-            },
             "Oracle-Standard-Edition-11.2.0-BYOL": {
                 "Engine": "oracle-ee",
                 "DB": "Oracle",
                 "Version": "11.2",
-                "DatabaseSize": "db.t2.large",
-                "LicenseModel": "bring-your-own-license",
-                "AllocatedStorage": "100",
-                "Port": 1521
-            },
-            "Oracle-Standard-Edition-One-12.1.0-BYOL": {
-                "Engine": "oracle-se1",
-                "DB": "Oracle",
-                "Version": "12.1",
                 "DatabaseSize": "db.t2.large",
                 "LicenseModel": "bring-your-own-license",
                 "AllocatedStorage": "100",
@@ -521,15 +502,6 @@
                 "AllocatedStorage": "100",
                 "Port": 1521
             },
-            "Oracle-Standard-Edition-One-12.1.0-License-Included": {
-                "Engine": "oracle-se1",
-                "DB": "Oracle",
-                "Version": "12.1",
-                "DatabaseSize": "db.t2.large",
-                "LicenseModel": "license-included",
-                "AllocatedStorage": "100",
-                "Port": 1521
-            },
             "Oracle-Standard-Edition-One-11.2.0-License-Included": {
                 "Engine": "oracle-se1",
                 "DB": "Oracle",
@@ -537,20 +509,6 @@
                 "DatabaseSize": "db.t2.large",
                 "LicenseModel": "license-included",
                 "AllocatedStorage": "100",
-                "Port": 1521
-            },
-            "Oracle-License-Included": {
-                "Engine": "oracle-se1",
-                "DB": "Oracle",
-                "LicenseModel": "license-included",
-                "AllocatedStorage": "50",
-                "Port": 1521
-            },
-            "Oracle-Bring-Your-Own-License": {
-                "Engine": "oracle-se1",
-                "DB": "Oracle",
-                "LicenseModel": "bring-your-own-license",
-                "AllocatedStorage": "50",
                 "Port": 1521
             }
         }
