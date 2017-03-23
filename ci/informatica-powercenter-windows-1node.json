@@ -13,7 +13,7 @@
     },
     {
         "ParameterKey": "DatabasePassword",
-        "ParameterValue": "$[alfred_genpass_16]!"
+        "ParameterValue": "a$[alfred_genpass_16]"
     },
     {
         "ParameterKey": "DatabasePasswordConfirm",
