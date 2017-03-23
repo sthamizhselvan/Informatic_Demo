@@ -13,7 +13,7 @@
     },
     {
         "ParameterKey": "DatabasePassword",
-        "ParameterValue": "$[alfred_genpass_18]"
+        "ParameterValue": "$[alfred_genpass_16]!"
     },
     {
         "ParameterKey": "DatabasePasswordConfirm",
@@ -41,7 +41,7 @@
     },
     {
         "ParameterKey": "InformaticaDomainPassword",
-        "ParameterValue": "$[alfred_genpass_18]"
+        "ParameterValue": "$[alfred_genpass_16]!"
     },
     {
         "ParameterKey": "InformaticaDomainPasswordConfirm",
