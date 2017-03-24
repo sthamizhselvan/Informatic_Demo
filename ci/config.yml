@@ -19,17 +19,17 @@ global:
     - us-west-2
   reporting: true
 tests:
-#  linux-1node:
-#    parameter_input: informatica-powercenter-linux-1node.json
-#    template_file: informatica-powercenter-master.template
+  linux-1node:
+    parameter_input: informatica-powercenter-linux-1node.json
+    template_file: informatica-powercenter-master.template
   linux-4node:
     parameter_input: informatica-powercenter-linux-4node.json
     regions:
       - eu-central-1
     template_file: informatica-powercenter-master.template
-#  windows-1node:
-#    parameter_input: informatica-powercenter-windows-1node.json
-#    template_file: informatica-powercenter-master.template
+  windows-1node:
+    parameter_input: informatica-powercenter-windows-1node.json
+    template_file: informatica-powercenter-master.template
   windows-4node:
     parameter_input: informatica-powercenter-windows-4node.json
     regions:
