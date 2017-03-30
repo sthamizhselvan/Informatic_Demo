@@ -1199,6 +1199,38 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
+                                    ]
+                                }
                             }
                         }
                     },
@@ -1543,6 +1575,38 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
+                                    ]
+                                }
                             }
                         }
                     }
@@ -1852,6 +1916,38 @@
                                                 ]
                                             }
                                         ]
+                                    ]
+                                }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
                                     ]
                                 }
                             }
@@ -2165,6 +2261,38 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
+                                    ]
+                                }
                             }
                         }
                     }
@@ -2474,6 +2602,38 @@
                                                 ]
                                             }
                                         ]
+                                    ]
+                                }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
                                     ]
                                 }
                             }
@@ -2787,6 +2947,38 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
+                                    ]
+                                }
                             }
                         }
                     }
@@ -3096,6 +3288,38 @@
                                                 ]
                                             }
                                         ]
+                                    ]
+                                }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
                                     ]
                                 }
                             }
@@ -3409,6 +3633,38 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
+                                    ]
+                                }
                             }
                         }
                     }
@@ -3718,6 +3974,38 @@
                                                 ]
                                             }
                                         ]
+                                    ]
+                                }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
                                     ]
                                 }
                             }
@@ -4031,6 +4319,38 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
+                                    ]
+                                }
                             }
                         }
                     }
@@ -4340,6 +4660,38 @@
                                                 ]
                                             }
                                         ]
+                                    ]
+                                }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
                                     ]
                                 }
                             }
@@ -4653,6 +5005,38 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
+                                    ]
+                                }
                             }
                         }
                     }
@@ -4962,6 +5346,38 @@
                                                 ]
                                             }
                                         ]
+                                    ]
+                                }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
                                     ]
                                 }
                             }
@@ -5275,6 +5691,38 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
+                                    ]
+                                }
                             }
                         }
                     }
@@ -5586,6 +6034,38 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
+                                    ]
+                                }
                             }
                         }
                     }
@@ -5895,6 +6375,38 @@
                                                 ]
                                             }
                                         ]
+                                    ]
+                                }
+                            },
+                            "5-efs-automount": {
+                                "command": {
+                                    "Fn::If": [
+                                        "EFSCreateCondition",
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "echo \"",
+                                                    {
+                                                        "Ref": "FileSystem"
+                                                    },
+                                                    ".efs.",
+                                                    {
+                                                        "Ref": "AWS::Region"
+                                                    },
+                                                    ".amazonaws.com:/ ",
+                                                    {
+                                                        "Fn::FindInMap": [
+                                                            "Config",
+                                                            "Settings",
+                                                            "EFSDirectory"
+                                                        ]
+                                                    },
+                                                    " nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0\" >> /etc/fstab"
+                                                ]
+                                            ]
+                                        },
+                                        "echo \"EFS Not Supported\""
                                     ]
                                 }
                             }
