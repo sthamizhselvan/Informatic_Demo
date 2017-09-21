@@ -356,49 +356,49 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "INFAPCWINHVM": "Informatica-PowerCenter-10.1.1-WindowsServer2012R2-73eb10f0-ef93-494a-bff4-de78cbe56fcb-ami-12719a04.4"
+                "INFAPCWINHVM": "Informatica-PowerCenter-10.1.101-WindowsServer2012R2-SecAgent-726f8e47-3948-42f5-aa00-52b4b04ed02f-ami-11bc8507.4"
             },
             "ap-northeast-1": {
-                "INFAPCWINHVM": "ami-69cf8c0e"
+                "INFAPCWINHVM": "ami-e72dcb81"
             },
             "ap-northeast-2": {
-                "INFAPCWINHVM": "ami-1a9b4b74"
+                "INFAPCWINHVM": "ami-547aa43a"
             },
             "ap-south-1": {
-                "INFAPCWINHVM": "TBD"
+                "INFAPCWINHVM": "ami-8f047ce0"
             },
             "ap-southeast-1": {
-                "INFAPCWINHVM": "ami-85df68e6"
+                "INFAPCWINHVM": "ami-f48a1a97"
             },
             "ap-southeast-2": {
-                "INFAPCWINHVM": "ami-53787930"
+                "INFAPCWINHVM": "ami-19869a7a"
             },
             "ca-central-1": {
-                "INFAPCWINHVM": "ami-d4a01db0"
+                "INFAPCWINHVM": "ami-b4338cd0"
             },
             "eu-central-1": {
-                "INFAPCWINHVM": "ami-8b3ff7e4"
+                "INFAPCWINHVM": "ami-d5d17cba"
             },
             "eu-west-1": {
-                "INFAPCWINHVM": "ami-fba5819d"
+                "INFAPCWINHVM": "ami-44e40a3d"
             },
             "eu-west-2": {
-                "INFAPCWINHVM": "ami-7c617418"
+                "INFAPCWINHVM": "ami-6f5d4c0b"
             },
             "sa-east-1": {
-                "INFAPCWINHVM": "ami-1d3f5871"
+                "INFAPCWINHVM": "ami-abe793c7"
             },
             "us-east-1": {
-                "INFAPCWINHVM": "ami-2203c334"
+                "INFAPCWINHVM": "ami-76e8f860"
             },
             "us-east-2": {
-                "INFAPCWINHVM": "ami-d0e2c7b5"
+                "INFAPCWINHVM": "ami-32715157"
             },
             "us-west-1": {
-                "INFAPCWINHVM": "ami-319cc051"
+                "INFAPCWINHVM": "ami-93260ff3"
             },
             "us-west-2": {
-                "INFAPCWINHVM": "ami-c63db8a6"
+                "INFAPCWINHVM": "ami-44f8e13d"
             }
         },
         "AWSInfoRegionMap": {

@@ -369,49 +369,49 @@
     "Mappings": {
         "AWSAMIRegionMap": {
             "AMI": {
-                "INFAPCRHELHVM": "Informatica-PowerCenter-10.1.1-RHEL7-b1c14762-8f3f-41df-ae2c-91adee508cf9-ami-8c5fab9a.4"
+                "INFAPCRHELHVM": "Informatica-PowerCenter-10.1.101-RHEL7.3-SecAgent-a1394219-fced-4a9c-87b9-b525ab7793f0-ami-b92e14af.4"
             },
             "ap-northeast-1": {
-                "INFAPCRHELHVM": "ami-67ce8d00"
+                "INFAPCRHELHVM": "ami-322bcd54"
             },
             "ap-northeast-2": {
-                "INFAPCRHELHVM": "ami-b69343d8"
+                "INFAPCRHELHVM": "ami-197da377"
             },
             "ap-south-1": {
-                "INFAPCRHELHVM": "TBD"
+                "INFAPCRHELHVM": "ami-73077f1c"
             },
             "ap-southeast-1": {
-                "INFAPCRHELHVM": "ami-68de690b"
+                "INFAPCRHELHVM": "ami-ed8b1b8e"
             },
             "ap-southeast-2": {
-                "INFAPCRHELHVM": "ami-7e7b7a1d"
+                "INFAPCRHELHVM": "ami-d4879bb7"
             },
             "ca-central-1": {
-                "INFAPCRHELHVM": "ami-b4a31ed0"
+                "INFAPCRHELHVM": "ami-43338c27"
             },
             "eu-central-1": {
-                "INFAPCRHELHVM": "ami-ae3df5c1"
+                "INFAPCRHELHVM": "ami-75d07d1a"
             },
             "eu-west-1": {
-                "INFAPCRHELHVM": "ami-aaa682cc"
+                "INFAPCRHELHVM": "ami-d1e40aa8"
             },
             "eu-west-2": {
-                "INFAPCRHELHVM": "ami-63677207"
+                "INFAPCRHELHVM": "ami-805e4fe4"
             },
             "sa-east-1": {
-                "INFAPCRHELHVM": "ami-ac3e59c0"
+                "INFAPCRHELHVM": "ami-24e79348"
             },
             "us-east-1": {
-                "INFAPCRHELHVM": "ami-1502c203"
+                "INFAPCRHELHVM": "ami-3ae7f72c"
             },
             "us-east-2": {
-                "INFAPCRHELHVM": "ami-45e2c720"
+                "INFAPCRHELHVM": "ami-34715151"
             },
             "us-west-1": {
-                "INFAPCRHELHVM": "ami-719cc011"
+                "INFAPCRHELHVM": "ami-31270e51"
             },
             "us-west-2": {
-                "INFAPCRHELHVM": "ami-3b3cb95b"
+                "INFAPCRHELHVM": "ami-85fae3fc"
             }
         },
         "AWSInfoRegionMap": {
