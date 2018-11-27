@@ -41,7 +41,7 @@
     },
     {
         "ParameterKey": "InformaticaDomainPassword",
-        "ParameterValue": "A12-$[taskcat_random-string]-!"
+        "ParameterValue": "A-eW8iV1iZ3iN1hA9!"
     },
     {
         "ParameterKey": "InformaticaDomainPasswordConfirm",
