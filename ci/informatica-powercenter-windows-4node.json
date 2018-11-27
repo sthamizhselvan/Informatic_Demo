@@ -13,11 +13,11 @@
     },
     {
         "ParameterKey": "DatabasePassword",
-        "ParameterValue": "a$[alfred_genpass_16]"
+        "ParameterValue": "$[taskcat_genpass_15]"
     },
     {
         "ParameterKey": "DatabasePasswordConfirm",
-        "ParameterValue": "$[alfred_getparamvalue_DatabasePassword]"
+        "ParameterValue": "$[taskcat_getval_DatabasePassword]"
     },
     {
         "ParameterKey": "DatabaseType",
@@ -33,7 +33,7 @@
     },
     {
         "ParameterKey": "EncryptionKeyPhrase",
-        "ParameterValue": "$[alfred_genpass_20]"
+        "ParameterValue": "$[taskcat_genpass_20]"
     },
     {
         "ParameterKey": "InformaticaDomainName",
@@ -41,11 +41,11 @@
     },
     {
         "ParameterKey": "InformaticaDomainPassword",
-        "ParameterValue": "$[alfred_genpass_16]!"
+        "ParameterValue": "$[taskcat_genpass_15]"
     },
     {
         "ParameterKey": "InformaticaDomainPasswordConfirm",
-        "ParameterValue": "$[alfred_getparamvalue_InformaticaDomainPassword]"
+        "ParameterValue": "$[taskcat_getval_InformaticaDomainPassword]"
     },
     {
         "ParameterKey": "InformaticaDomainUsername",
