@@ -5,7 +5,7 @@
         "AWSAMIRegionMap":{
             "Filters":{
                 "INFAPCRHELHVM":{
-                    "name":"Informatica BDM-10.1.1-U2Administrator-RHEL-7.2_HVM_v8-*",
+                    "name":"Informatica-PowerCenter-10.2.0HF2-RHEL7.6",
                     "owner-alias":"aws-marketplace",
                     "product-code.type":"marketplace"
                 }
