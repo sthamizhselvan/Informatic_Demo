@@ -381,40 +381,40 @@
                 "INFAPCRHELHVM": "Informatica-PowerCenter-10.1.101-RHEL7.3-SecAgent-a1394219-fced-4a9c-87b9-b525ab7793f0-ami-b92e14af.4"
             },
             "ap-northeast-1": {
-                "INFAPCRHELHVM": "ami-322bcd54"
+                "INFAPCRHELHVM": "ami-83e2d9e4"
             },
             "ap-northeast-2": {
-                "INFAPCRHELHVM": "ami-197da377"
+                "INFAPCRHELHVM": "ami-666ab708"
             },
             "ap-south-1": {
-                "INFAPCRHELHVM": "ami-73077f1c"
+                "INFAPCRHELHVM": "ami-3dd4a952"
             },
             "ap-southeast-1": {
-                "INFAPCRHELHVM": "ami-ed8b1b8e"
+                "INFAPCRHELHVM": "ami-15d65076"
             },
             "ap-southeast-2": {
-                "INFAPCRHELHVM": "ami-d4879bb7"
+                "INFAPCRHELHVM": "ami-06abbe65"
             },
             "eu-central-1": {
-                "INFAPCRHELHVM": "ami-75d07d1a"
+                "INFAPCRHELHVM": "ami-4435ed2b"
             },
             "eu-west-1": {
-                "INFAPCRHELHVM": "ami-d1e40aa8"
+                "INFAPCRHELHVM": "ami-6b2d380d"
             },
             "sa-east-1": {
-                "INFAPCRHELHVM": "ami-24e79348"
+                "INFAPCRHELHVM": "ami-20bdd34c"
             },
             "us-east-1": {
-                "INFAPCRHELHVM": "ami-3ae7f72c"
+                "INFAPCRHELHVM": "ami-ecf7b0fa"
             },
             "us-east-2": {
-                "INFAPCRHELHVM": "ami-34715151"
+                "INFAPCRHELHVM": "ami-d79dbab2"
             },
             "us-west-1": {
-                "INFAPCRHELHVM": "ami-31270e51"
+                "INFAPCRHELHVM": "ami-c77c5ca7"
             },
             "us-west-2": {
-                "INFAPCRHELHVM": "ami-85fae3fc"
+                "INFAPCRHELHVM": "ami-13f69773"
             }
         },
         "AWSInfoRegionMap": {
