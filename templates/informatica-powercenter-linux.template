@@ -395,18 +395,18 @@
             "ap-southeast-2": {
                 "INFAPCRHELHVM": "ami-d4879bb7"
             },
-            "ca-central-1": {
-                "INFAPCRHELHVM": "ami-43338c27"
-            },
+#           "ca-central-1": {
+#               "INFAPCRHELHVM": "ami-43338c27"
+#           },
             "eu-central-1": {
                 "INFAPCRHELHVM": "ami-75d07d1a"
             },
             "eu-west-1": {
                 "INFAPCRHELHVM": "ami-d1e40aa8"
             },
-            "eu-west-2": {
-                "INFAPCRHELHVM": "ami-805e4fe4"
-            },
+#           "eu-west-2": {
+#               "INFAPCRHELHVM": "ami-805e4fe4"
+#           },
             "sa-east-1": {
                 "INFAPCRHELHVM": "ami-24e79348"
             },
@@ -444,10 +444,10 @@
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             },
-            "ca-central-1": {
-                "Partition": "aws",
-                "QuickStartS3URL": "https://s3.amazonaws.com"
-            },
+#           "ca-central-1": {
+#               "Partition": "aws",
+#               "QuickStartS3URL": "https://s3.amazonaws.com"
+#            },
             "eu-central-1": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
@@ -456,10 +456,10 @@
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
             },
-            "eu-west-2": {
-                "Partition": "aws",
-                "QuickStartS3URL": "https://s3.amazonaws.com"
-            },
+#            "eu-west-2": {
+#                "Partition": "aws",
+#                "QuickStartS3URL": "https://s3.amazonaws.com"
+#            },
             "sa-east-1": {
                 "Partition": "aws",
                 "QuickStartS3URL": "https://s3.amazonaws.com"
