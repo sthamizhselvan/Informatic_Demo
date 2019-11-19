@@ -470,7 +470,7 @@
         },
         "Config": {
             "Settings": {
-                "DatabaseSize": "db.t2.large",
+                "DatabaseSize": "db.t3.large",
                 "IntegrationServiceName": "PowerCenterIntegrationService",
                 "RepositoryServiceName": "PowerCenterRepository",
                 "GridName": "InfaDefaultGrid"
@@ -479,7 +479,7 @@
                 "Engine": "oracle-ee",
                 "DB": "Oracle",
                 "Version": "12.1",
-                "DatabaseSize": "db.t2.large",
+                "DatabaseSize": "db.t3.large",
                 "LicenseModel": "bring-your-own-license",
                 "AllocatedStorage": "100",
                 "Port": 1521
@@ -488,7 +488,7 @@
                 "Engine": "oracle-ee",
                 "DB": "Oracle",
                 "Version": "11.2",
-                "DatabaseSize": "db.t2.large",
+                "DatabaseSize": "db.t3.large",
                 "LicenseModel": "bring-your-own-license",
                 "AllocatedStorage": "100",
                 "Port": 1521
@@ -497,7 +497,7 @@
                 "Engine": "oracle-ee",
                 "DB": "Oracle",
                 "Version": "11.2",
-                "DatabaseSize": "db.t2.large",
+                "DatabaseSize": "db.t3.large",
                 "LicenseModel": "bring-your-own-license",
                 "AllocatedStorage": "100",
                 "Port": 1521
@@ -506,7 +506,7 @@
                 "Engine": "oracle-se1",
                 "DB": "Oracle",
                 "Version": "11.2",
-                "DatabaseSize": "db.t2.large",
+                "DatabaseSize": "db.t3.large",
                 "LicenseModel": "bring-your-own-license",
                 "AllocatedStorage": "100",
                 "Port": 1521
@@ -515,7 +515,7 @@
                 "Engine": "oracle-se1",
                 "DB": "Oracle",
                 "Version": "11.2",
-                "DatabaseSize": "db.t2.large",
+                "DatabaseSize": "db.t3.large",
                 "LicenseModel": "license-included",
                 "AllocatedStorage": "100",
                 "Port": 1521
