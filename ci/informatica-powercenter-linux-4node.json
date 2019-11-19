@@ -69,7 +69,7 @@
     },
     {
         "ParameterKey": "PowerCenterInstanceType",
-        "ParameterValue": "c4.2xlarge"
+        "ParameterValue": "m4.large"
     },
     {
         "ParameterKey": "PowerCenterOS",
