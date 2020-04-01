@@ -407,6 +407,7 @@ Conditions:
   InfaOnWindows: !Equals
     - !Ref 'PowerCenterOS'
     - Windows Server
+  UsingDefaultBucket: !Equals [!Ref QSS3BucketName, 'aws-quickstart']
 Resources:
   VPCStack:
     Type: AWS::CloudFormation::Stack
